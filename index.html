@@ -3,110 +3,270 @@
 
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>首页</title>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
-		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
-		<link rel="stylesheet" type="text/css" href="css/app.css" />
-		<link rel="stylesheet" type="text/css" href="css/pulltorefresh.css" />
-		<script src="js/mui.min.js"></script>
-		<script src="js/vue.min.js"></script>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/scroll.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/mui.pullToRefresh.js"></script>
-		<script src="js/mui.pullToRefresh.material.js"></script>
+		<title>商品列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="./css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="./css/pulltorefresh.css" />
+		<link rel="stylesheet" type="text/css" href="./css/app.css" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="./css/app.css" />
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/mui.pullToRefresh.js"></script>
+		<script src="./js/mui.pullToRefresh.material.js"></script>
+		<style>
+			.mui-off-canvas-left,
+			.mui-off-canvas-right {
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				bottom: 0;
+				visibility: hidden;
+				box-sizing: content-box;
+				width: 70%;
+				min-height: 100%;
+				background: #fff;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.mui-btn {
+				padding: 5px;
+				margin-bottom: 3px;
+			}
+		</style>
 	</head>
 
 	<body>
-		<header id="header" class="mui-bar mui-bar-nav">
-			<div class="mui-title-div mui-pull-left">壹品仓</div>
-			<div class="mui-title-div mui-pull-right">
-				<a href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-				<a href="./html/userinfo.html" style="margin-left: 10px;" class="mui-icon mui-icon-person"></a>
-				<a href="./html/server.html" style="margin-left: 10px;" class="mui-icon mui-icon-email"></a>
-			</div>
-		</header>
-
-		<div class="mui-content ">
-			<div class="mui-scroll-wrapper" id="pullrefresh" style="overflow-y:auto;">
-				<div class="mui-scroll" id="refresh_container">
-					<!--这里放置真实显示的DOM内容-->
-					<ul class="mui-table-view">
-						<li class="mui-row" id="goodsrow">
-							<div class="mui-card">
-								<div class="mui-card-content">
-									<div class="mui-card-content-inner" style="color: #333;">
-										<h2><font color="gainsboro">即时发售高端时尚运动童装XTEP KIDS</font></h2>
-										<p>
-											<font color="gainsboro">线下购买地址：上海市浦东新区航南路1808号</font>
-										</p>
-									</div>
-								</div>
-								<div class="mui-card-footer">
-								</div>
-							</div>
-
-							<div class="mui-card mui-car-url">
-								<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/1.jpg)">
-									<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-								</div>
-								<div class="mui-card-content">
-									<div class="mui-card-content-inner">
-										<h2>特步  2.5折</h2>
-										<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-									</div>
-								</div>
-								<div class="mui-card-footer">
-									<p style="color: #333;">抢购进行中~~~</p>
-								</div>
-							</div>
-
-							<div class="mui-card mui-car-url">
-								<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/a.jpg)">
-									<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-								</div>
-								<div class="mui-card-content">
-									<div class="mui-card-content-inner">
-										<h2>特步  2.5折</h2>
-										<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-									</div>
-								</div>
-								<div class="mui-card-footer">
-									<p style="color: #333;">抢购进行中~~~</p>
-								</div>
-							</div>
-
-							<div class="mui-card mui-car-url">
-								<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/b.jpg)">
-									<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-								</div>
-								<div class="mui-card-content">
-									<div class="mui-card-content-inner">
-										<h2>特步  2.5折</h2>
-										<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-									</div>
-								</div>
-								<div class="mui-card-footer">
-									<p style="color: #333;">抢购进行中~~~</p>
-								</div>
-							</div>
-						</li>
-					</ul>
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<header class="mui-bar mui-bar-nav">
+							<h1 class="mui-title">选择品牌</h1>
+						</header>
+						<div class="mui-content">
+							<ul class="mui-table-view">
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+							            <div class="mui-media-body">
+							            		特步
+							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+							            </div>
+							        </a>
+							    </li>
+							    <li class="mui-table-view-cell mui-media">
+							        <a href="javascript:void(0);">
+							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+							            <div class="mui-media-body">
+							            		阿迪达斯
+							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+							            </div>
+							        </a>
+							    </li>
+							</ul>
+						</div>
+					</div>
 				</div>
+			</aside>
+
+			<!--主页部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<h1 class="mui-title">一品仓</h1>
+					<div class="mui-title-div mui-pull-right">
+						<a href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a href="./html/userinfo.html" style="margin-left: 0px;" class="mui-icon mui-icon-person"></a>
+						<a href="./html/server.html" style="margin-left: 0px;" class="mui-icon mui-icon-email"></a>
+					</div>
+				</header>
+				<div class="mui-scroll-wrapper mui-content" id="pullrefresh">
+					<div class="mui-scroll" id="refresh_container">
+						<!--这里放置真实显示的DOM内容-->
+						<ul class="mui-table-view">
+							<li class="mui-row" id="goodsrow">
+								<div class="mui-card">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner" style="color: #333;">
+											<h2><font color="gainsboro">即时发售高端时尚运动童装XTEP KIDS</font></h2>
+											<p>
+												<font color="gainsboro">线下购买地址：上海市浦东新区航南路1808号</font>
+											</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+									</div>
+								</div>
+
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/1.jpg)">
+										<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+									</div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<p style="color: #333;">抢购进行中~~~</p>
+									</div>
+								</div>
+
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/a.jpg)">
+										<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+									</div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<p style="color: #333;">抢购进行中~~~</p>
+									</div>
+								</div>
+
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/b.jpg)">
+										<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+									</div>
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<p style="color: #333;">抢购进行中~~~</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
+				<div class="mui-off-canvas-backdrop"></div>
 			</div>
-
 		</div>
-
 		<script type="text/javascript" charset="utf-8">
+			function initView() {
+				mui("body").on("tap", "a", function() {
+					if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript") > -1) {
+						mui.openWindow({
+							url: this.href
+						})
+					}
+				})
+			}
+
 			var count = 0;
 			mui.init();
 			mui.ready(function() {
-
+				//初始化scroll组件
 				var scroll = mui('.mui-scroll-wrapper').scroll({
 					indicators: true,
-				}); //初始化scroll组件
+				}); 
 
 				// 刷新组件对象
 				var pullToRefresh = mui('#refresh_container').pullToRefresh({
@@ -134,23 +294,20 @@
 				document.querySelector('.mui-scroll-wrapper').addEventListener('scroll', function(e) {
 					console.log(scroll.y)
 				})
-				//				mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
-
+				//mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
 				mui("body").on("tap", ".mui-car-url", function() {
 					mui.openWindow({
 						url: "./html/goods_list.html"
 					})
 				})
-
-				mui("body").on("tap", "a", function() {
-					if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript")>-1) {
-						mui.openWindow({
-							url: this.href
-						})
-					}
-	
+				//折叠面板中的按钮触发事件
+				mui("#offCanvasSideScroll").on("tap", "li", function() {
+					mui.openWindow({
+						url: "./html/goods_list.html"
+					})
 				})
-			})
+
+			});
 		</script>
 	</body>
 
