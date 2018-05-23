@@ -1,0 +1,209 @@
+body {
+	style: "background-color: #fff;"
+}
+/*#header{
+	background-color: #eee;
+}*/
+.mui-title {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 44px;
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin: 0 -10px;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: #000;
+    font-weight: 600;
+}
+
+.mui-title-div {
+	font-family: arial font-size: 17px;
+	font-weight: 600;
+	line-height: 44px;
+	display: block;
+	margin: 0 10px;
+	padding: 0;
+	text-align: center;
+	white-space: nowrap;
+	color: #000;
+}
+
+/*.mui-content {
+	background-color: #fff;
+}*/
+
+.mui-icon-extra {
+	font-family: MuiiconSpread;
+	font-size: 24px;
+	font-weight: 400;
+	font-style: normal;
+	color: #000000;
+	line-height: 1;
+	display: inline-block;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.mui-bar .mui-icon {
+	font-size: 24px;
+	position: relative;
+	font-weight: 400;
+	color: #000000;
+	z-index: 20;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.mui-card {
+	font-size: 14px;
+	position: relative;
+	overflow: hidden;
+	border: none;
+	padding: 5px;
+	background-color: #fff;
+	box-shadow: 0 0px 0px rgba(0, 0, 0, .3);
+}
+
+.mui-btn {
+	border-radius: 0px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+.mui-segmented-control {
+	font-size: 15px;
+	font-weight: 400;
+	position: relative;
+	display: table;
+	overflow: hidden;
+	table-layout: fixed;
+	border: 1px solid #F0AD4E;
+	border-radius: 3px;
+	background-color: transparent;
+	-webkit-touch-callout: none;
+}
+
+.mui-segmented-control .mui-control-item.mui-active {
+	color: #fff;
+	background-color: #F0AD4E
+}
+
+.mui-segmented-control .mui-control-item {
+	line-height: 38px;
+	display: table-cell;
+	overflow: hidden;
+	width: 1%;
+	-webkit-transition: background-color .1s linear;
+	transition: background-color .1s linear;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #F0AD4E;
+	border-color: #F0AD4E;
+	border-left: 1px solid #F0AD4E;
+}
+
+.mui-card-header,
+.mui-card-footer {
+	position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	min-height: 44px;
+	padding: 0px 15px;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+
+
+
+
+
+
+/*登录注册功能样式*/
+.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 8px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>商品列表</title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/pulltorefresh.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+	</head>
+
+	<body>
+		<div id="mui-content" class="mui-content">
+			<div id="bg" style="background-image:url(../images/tebu.jpg);background-attachment: fixed;background-repeat: no-repeat;background-size: cover;">
+				<div class="mui-row">
+					<a class="mui-action-back mui-pull-right"><i class="mui-icon mui-icon-closeempty" style="font-size: 50px;color:white"></i></a>
+				</div>
+				<div class="mui-row" style="margin-top: 60px;">
+					<div class="mui-card" style="margin-left: 30px;margin-right: 30px;margin-bottom: 0px;;">
+						<div class="mui-card-footer" style="overflow-x: scroll;width: 100%;">
+							<table>
+								<tr>
+									<th>
+										<a style="margin-left: 3px;" class="mui-btn mui-btn-warning">童款</a>
+										<a style="margin-left: 3px;" class="mui-btn">男装</a>
+										<a style="margin-left: 3px;" class="mui-btn">女装</a>
+									</th>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+					<div class="mui-card" style="margin-left: 20px;margin-right: 20px;margin-bottom: 0px;margin-top: 0;">
+						<div class="mui-card-footer" style="overflow-x: scroll;width: 100%;">
+							<table>
+								<tr>
+									<th>
+										<a style="font-size: 10px;" class="mui-btn  mui-btn-black">全部尺码</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">34</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">35</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">35</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">36</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">37</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">38</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">39</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">40</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">41</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">42</a>
+									</th>
+									<th>
+										<a style="font-size: 10px;margin-left: 3px;" class="mui-btn">43</a>
+									</th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="mui-card" style="margin-left: 10px;margin-right: 10px;margin-bottom: 0px;margin-top: 0;padding-bottom: 0px;">
+						<div class="mui-card-footer" id="card-content" style="padding: 0px 15px;">
+							<!--下拉刷新容器-->
+							<div class="mui-scroll-wrapper" id="pullrefresh" style="overflow-y:auto;">
+								<div class="mui-scroll" id="refresh_container">
+									<!--这里放置真实显示的DOM内容-->
+									<ul class="mui-table-view" style="margin-top: 0px;padding: 3px 3px 3px 3px;">
+										<li class="mui-row" id="goodsrow">
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/1.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/a.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/b.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/c.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/a.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+											<div class="mui-col-sm-6 mui-col-xs-6">
+												<div style="padding: 1px;">
+													<img width="100%" src="../images/b.jpg" />
+													<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
+													<span style="margin-left:10px;font-size: 12px;">¥50</span>
+													<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
+													<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<script type="text/javascript" charset="utf-8">
+				$("#bg").css("height", $(window).height());
+				$('#card-content').css("height", $(window).height() - $('#card-content').offset().top)
+				$('#pullrefresh').css("height", $(window).height() - $('#card-content').offset().top)
+
+				function initView() {
+					mui("body").on("tap", "a", function() {
+						if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript") > -1) {
+							mui.openWindow({
+								url: this.href
+							})
+						}
+					})
+				}
+
+				var count = 0;
+				mui.init();
+				mui.ready(function() {
+					var scroll = mui('.mui-scroll-wrapper').scroll({
+						indicators: true,
+					}); //初始化scroll组件
+
+					// 刷新组件对象
+					var pullToRefresh = mui('#refresh_container').pullToRefresh({
+						down: {
+							callback: function() {
+								var _self = this;
+								setTimeout(function() {
+									_self.endPullDownToRefresh();
+								}, 1000);
+							}
+						},
+						up: {
+							auto: false, //默认执行一次上拉加载
+							callback: function() {
+								alert(1)
+								var _self = this;
+								setTimeout(function() {
+									_self.endPullUpToRefresh(count++ > 1); //最后一页加载完成后禁用上拉
+								}, 1000);
+							}
+						}
+					});
+
+					var scroll = mui('.mui-scroll-wrapper').scroll();
+					document.querySelector('.mui-scroll-wrapper').addEventListener('scroll', function(e) {
+						console.log(scroll.y)
+					})
+					mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
+					$("#goodsrow").children().each(function() {
+						this.addEventListener("tap", function() {
+							mui.openWindow({
+								url: "goods_detail.html"
+							})
+						})
+					})
+				});
+			</script>
+	</body>
+
+</html>

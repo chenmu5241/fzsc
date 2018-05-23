@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>服装商城</title>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title" style="font-weight: 900;">收货地址</h1>
+		</header>
+
+		<div id="mui-content" class="mui-content" style="margin-bottom: 60px;">
+					<div class="mui-card" style="background-color:#FAFAFA">
+						<div class="mui-card-header" >
+							<p>刁冬梅</p><p>18837030749</p>
+						</div>
+						<div class="mui-card-content-inner" >
+							河南省商丘市夏邑县吉阳镇及西村积极水电费第三方水电费水电费第三方
+						</div>
+						<div class="mui-card-footer" >
+							<div><label><input type="radio">默认地址</label></div><div class="mui-button-row"><a class="mui-btn mui-btn-outlined">编辑</a> <a class="mui-btn mui-btn-danger mui-btn-outlined">删除</a></div>
+						</div>
+					</div>
+			
+				<div class="mui-card" style="background-color:#FAFAFA">
+						<div class="mui-card-header" >
+							<p>刁冬梅</p><p>18837030749</p>
+						</div>
+						<div class="mui-card-content-inner" >
+							河南省商丘市夏邑县吉阳镇及西村积极水电费第三方水电费水电费第三方
+						</div>
+						<div class="mui-card-footer" >
+							<div><label><input type="radio">默认地址</label></div><div class="mui-button-row"><a class="mui-btn mui-btn-outlined">编辑</a> <a class="mui-btn mui-btn-danger mui-btn-outlined">删除</a></div>
+						</div>
+					</div>
+			<div class="mui-row">
+				<div class="mui-col-sm-12 mui-col-xs-12 mui-text-center" style="margin-top: 20px;">
+					<a href="address_add.html" class="mui-btn mui-btn-danger">添加收货地址</a>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+	<script>
+		function initView() {
+			mui("body").on("tap", "a", function() {
+				if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript")>-1) {
+					mui.openWindow({
+						url: this.href
+					})
+				}
+			})
+		}
+		mui.init();
+		mui.ready(function() {
+			initView();
+		})
+	</script>
+
+</html>

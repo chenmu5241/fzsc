@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>服装商城</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<style>
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body style="background-color: #fff;">
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title" style="font-weight: 900;">单品详情</h1>
+			<div class="mui-title-div mui-pull-right">
+				<a href="server.html" style="margin-left: 10px;" class="mui-icon mui-icon-email"></a>
+				<a href="javascript:void(0)" onclick="mui.toast('功能暂未开放')" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
+			</div>
+		</header>
+		<div class="mui-content " style="margin-bottom: 60px;">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="javascript:void(0)"> <img height="375" src="../images/c.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="javascript:void(0)"> <img height="375" src="../images/1.jpg" data-preview-src="" data-preview-group="1">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="javascript:void(0)"> <img height="375" src="../images/a.jpg" data-preview-src="" data-preview-group="1">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="javascript:void(0)"> <img height="375" src="../images/b.jpg" data-preview-src="" data-preview-group="1">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="javascript:void(0)"> <img height="375" src="../images/c.jpg" data-preview-src="" data-preview-group="1">
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="javascript:void(0)"> <img src="../images/1.jpg">
+						</a>
+					</div>
+				</div>
+
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<div class="mui-row">
+				<h4>【特步童装】针织上衣6879496494646</h4>
+				<span style="margin-left:10px;font-size: 24px;color: red; ">¥100</span>
+				<span style="font-size: 12px;text-decoration: line-through;">原价 ¥100.00</span>
+			</div>
+			<p style="margin-top: 10px;margin-left: 10px;">购买须知</p>
+			<div class="row" style="background-color:#FAFAFA;font-size: 12px;margin: 0px 10px 0px 10px;">
+				<table width="100%">
+					<tr>
+						<td valign="top" width="80" style="font-weight: bold;">尺　　码</td>
+						<td>110 120 130 140 150 160 170</td>
+					</tr>
+					<tr>
+						<td valign="top" style="font-weight: bold;">温馨提示</td>
+						<td>线上线下共用库存请尽快下单购买！如出现购买无货的情况，将为您自动退款。在您签收商品之日起的七天之内，壹品仓为您提供七天无理由放心退服务，除质量问题外的退货需您自行承担运费</td>
+					</tr>
+					<tr>
+						<td valign="top" width="80" style="font-weight: bold;">客服时间</td>
+						<td>8:30-19:00</td>
+					</tr>
+					<tr>
+						<td valign="top" width="80" style="font-weight: bold;">说　　明</td>
+						<td>付款成功后我们将在48小时内为您发货，请留意您的短信通知</td>
+					</tr>
+				</table>
+			</div>
+			<p style="margin-top: 10px;margin-left: 10px;">商品评价</p>
+			<div class="row" style="background-color:#FAFAFA;font-size: 12px;margin: 0px 10px 0px 10px;">
+				<input type="text" class="mui-input-range " placeholder="请输入您的评价">
+			</div>
+		</div>
+
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item" href="card.html">
+				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">1</span></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="server.html">
+				<span class="mui-icon mui-icon-chatboxes"></span>
+				<span class="mui-tab-label">联系客服</span>
+			</a>
+			<a href="javascript:void(0)" onclick="mui.toast('功能暂未开放')" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
+		</nav>
+	</body>
+	<script src="../js/mui.zoom.js"></script>
+	<script src="../js/mui.previewimage.js"></script>
+	<script>
+	</script>
+
+</html>
+<script type="text/javascript" charset="utf-8">
+	function initView() {
+		mui("body").on("tap", "a", function() {
+			if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript")>-1) {
+				mui.openWindow({
+					url: this.href
+				})
+			}
+		})
+	}
+
+	mui.init();
+	mui.ready(function() {
+		mui.previewImage();
+		initView();
+	})
+</script>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>购物车</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title" >购物车</h1>
+			<div class="mui-title-div mui-pull-right">
+				<a href="javascript:void(0)" onclick="mui.toast('功能暂未开放')" style="margin-left: 10px;" class="mui-icon mui-icon-compose"></a>
+			</div>
+		</header>
+
+		<div id="mui-content" class="mui-content" style="margin-bottom: 49px;">
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/1.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/a.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/b.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/1.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/a.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-row" style="margin-top:10px;">
+				<div class="mui-col-sm-12 mui-col-xs-12">
+					<div class="mui-row" style="border-bottom:1px solid gainsboro;height: 110px;">
+						<div class=" mui-col-sm-2  mui-col-xs-2 mui-checkbox" style="vertical-align: bottom;">
+							<input style="top:40px;" name="checkbox" value="Item 1" type="checkbox">
+						</div>
+						<div class="mui-col-sm-10 mui-col-xs-10">
+							<div class="mui-row">
+								<div class="mui-col-sm-4 mui-col-xs-4">
+									<img width="100%" height="100" class="mui-media-object" src="../images/b.jpg">
+								</div>
+								<div class="mui-col-sm-8 mui-col-xs-8">
+									<p class='mui-ellipsis-2' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
+									<p style="margin-left: 5px; margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+									<div class="mui-row">
+										<div class="mui-col-sm-4 mui-col-xs-4">
+											<p style="margin-left: 5px;  text-decoration: line-through;margin-bottom: 0px;font-size: 12px;">¥100</p>
+											<p style="margin-left: 5px; color: red;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
+										</div>
+										<div class="mui-col-sm-8 mui-col-xs-8">
+											<div class="mui-numbox" data-numbox-min="1" style="width: 120px;height: 30px; margin-top:10px;" data-numbox-max="9">
+												<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+												<input id="test" class="mui-input-numbox" readonly="readonly" type="number" value="1">
+												<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<nav class="mui-bar mui-bar-tab">
+			<div class="mui-tab-item" href="card.html">
+				<div class="mui-input-row mui-checkbox mui-left" style="height: 30px;">
+					<label style="padding-left: 18px;">全选 <input name="checkbox" value="Item 2" type="checkbox"></label>
+				</div>
+			</div>
+			<div class="mui-tab-item" href="javascript:void(0)">
+				<p style="font-size: 14px;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;color:red;">合计:118元</p>
+				<p style="font-size: 12px;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;color: gray;">(不含运费)</p>
+			</div>
+			<a href="jiesuan.html" style="height: 30px;top: 0px;color:white" class="mui-tab-item mui-btn mui-btn-danger">结算</a>
+		</nav>
+
+	</body>
+
+	<script>
+		function initView() {
+			mui("body").on("tap", "a", function() {
+				if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript")>-1) {
+					mui.openWindow({
+						url: this.href
+					})
+				}
+			})
+		}
+		
+		mui.init();
+		mui.ready(function() {
+			initView();
+		})
+	</script>
+
+</html>
