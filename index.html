@@ -19,6 +19,9 @@
 		<script src="./js/jquery.min.js"></script>
 		<script src="./js/mui.pullToRefresh.js"></script>
 		<script src="./js/mui.pullToRefresh.material.js"></script>
+		<script src="./js/app.js"></script>
+		<script src="./js/mui.zoom.js"></script>
+		<script src="./js/mui.previewimage.js"></script>
 		<style>
 			.mui-off-canvas-left,
 			.mui-off-canvas-right {
@@ -38,12 +41,332 @@
 				padding: 5px;
 				margin-bottom: 3px;
 			}
+			
+			
+			
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
 		</style>
 	</head>
 
 	<body>
 		<!--侧滑菜单容器-->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--主页部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<h1 class="mui-title">一品仓</h1>
+					<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
+						<a href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a href="./html/userinfo.html" style="margin-left: 0px;" class="mui-icon mui-icon-person"></a>
+						<a href="./html/server.html" style="margin-left: 0px;" class="mui-icon mui-icon-email"></a>
+					</div>
+				</header>
+				<div class="mui-scroll-wrapper mui-content" id="pullrefresh">
+					<div class="mui-scroll" id="refresh_container">
+						<!--这里放置真实显示的DOM内容-->
+						<ul class="mui-table-view">
+							<li class="mui-row" id="goodsrow">
+								<!--<div class="mui-card">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner" style="color: #333;">
+											<h2><font color="gainsboro">即时发售高端时尚运动童装XTEP KIDS</font></h2>
+											<p>
+												<font color="gainsboro">线下购买地址：上海市浦东新区航南路1808号</font>
+											</p>
+										</div>
+									</div>
+								</div>-->
+
+								
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+											<p style="color: #333;"><a  class="expendbtn">展开全文</a></p>
+										</div>
+									</div>
+									<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
+										        </div>
+										     </div>
+									</div>
+									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+								</div>
+								<div class="mui-card mui-car-url">收起
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力</p>
+											<p style="color: #333;"><a class="expendbtn">展开全文</a></p>
+										</div>
+									</div>
+									<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
+										        </div>
+										     </div>
+									</div>
+									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+								</div>
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
+											<h2>特步  2.5折</h2>
+											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，</p>
+											<p style="color: #333;"><a  class="expendbtn">展开全文</a></p>
+										</div>
+									</div>
+									<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										        <div class="mui-col-sm-4 mui-col-xs-4" >
+										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
+										        </div>
+										     </div>
+									</div>
+									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
+								</div>
+
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+			
+			
+			
+			
+			
 			<!--菜单部分-->
 			<aside id="offCanvasSide" class="mui-off-canvas-left">
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
@@ -167,140 +490,23 @@
 				</div>
 			</aside>
 
-			<!--主页部分-->
-			<div class="mui-inner-wrap">
-				<header class="mui-bar mui-bar-nav">
-					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<h1 class="mui-title">一品仓</h1>
-					<div class="mui-title-div mui-pull-right">
-						<a href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-						<a href="./html/userinfo.html" style="margin-left: 0px;" class="mui-icon mui-icon-person"></a>
-						<a href="./html/server.html" style="margin-left: 0px;" class="mui-icon mui-icon-email"></a>
-					</div>
-				</header>
-				<div class="mui-scroll-wrapper mui-content" id="pullrefresh">
-					<div class="mui-scroll" id="refresh_container">
-						<!--这里放置真实显示的DOM内容-->
-						<ul class="mui-table-view">
-							<li class="mui-row" id="goodsrow">
-								<div class="mui-card">
-									<div class="mui-card-content">
-										<div class="mui-card-content-inner" style="color: #333;">
-											<h2><font color="gainsboro">即时发售高端时尚运动童装XTEP KIDS</font></h2>
-											<p>
-												<font color="gainsboro">线下购买地址：上海市浦东新区航南路1808号</font>
-											</p>
-										</div>
-									</div>
-									<div class="mui-card-footer">
-									</div>
-								</div>
-
-								<div class="mui-card mui-car-url">
-									<div class="mui-card-header mui-card-media" style="z-index:1;">
-											<div class="mui-row">
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<img src="images/1.jpg" width="100%" />
-										        </div>
-										     </div>
-									</div>
-									<p class="mui-pull-right " style="margin-top: -40px;background-color: #000000;color: white;z-index: 10000;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-									<div class="mui-card-content">
-										<div class="mui-card-content-inner">
-											<h2>特步  2.5折</h2>
-											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-										</div>
-									</div>
-									<div class="mui-card-footer">
-										<p style="color: #333;">抢购进行中~~~</p>
-									</div>
-								</div>
-
-								<div class="mui-card mui-car-url">
-									<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/a.jpg)">
-										<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-									</div>
-									<div class="mui-card-content">
-										<div class="mui-card-content-inner">
-											<h2>特步  2.5折</h2>
-											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-										</div>
-									</div>
-									<div class="mui-card-footer">
-										<p style="color: #333;">抢购进行中~~~</p>
-									</div>
-								</div>
-
-								<div class="mui-card mui-car-url">
-									<div class="mui-card-header mui-card-media" style="height:310px;background-image:url(./images/b.jpg)">
-										<p class="mui-pull-right " style="margin-top: 265px;background-color: #000000;color: white;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
-									</div>
-									<div class="mui-card-content">
-										<div class="mui-card-content-inner">
-											<h2>特步  2.5折</h2>
-											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-										</div>
-									</div>
-									<div class="mui-card-footer">
-										<p style="color: #333;">抢购进行中~~~</p>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
-				<div class="mui-off-canvas-backdrop"></div>
-			</div>
+			
 		</div>
 		<script type="text/javascript" charset="utf-8">
-			function initView() {
-				mui("body").on("tap", "a", function() {
-					if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript") > -1) {
-						mui.openWindow({
-							url: this.href
-						})
-					}
-				})
-			}
+			//是否已出现省略号
+			function isEllipsis(dom) {
+					if (dom.scrollHeight > dom.clientHeight) {
+						return true
+					}  
+		        return false;
+		    };
 
 			var count = 0;
 			mui.init();
 			mui.ready(function() {
+				initView();
+				mui.previewImage();//图片预览
+				
 				//初始化scroll组件
 				var scroll = mui('.mui-scroll-wrapper').scroll({
 					indicators: true,
@@ -330,10 +536,10 @@
 
 				var scroll = mui('.mui-scroll-wrapper').scroll();
 				document.querySelector('.mui-scroll-wrapper').addEventListener('scroll', function(e) {
-					console.log(scroll.y)
+					//console.log(scroll.y)
 				})
 				//mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
-				mui("body").on("tap", ".mui-car-url", function() {
+				mui("body").on("tap", ".buy", function() {
 					mui.openWindow({
 						url: "./html/goods_list.html"
 					})
@@ -344,8 +550,28 @@
 						url: "./html/goods_list.html"
 					})
 				})
+				
+				mui("body").on("tap",".expendbtn",function(){
+					if($(this).text()=="展开全文"){
+						$(this).parent().prev().removeClass("mui-ellipsis-2");
+						$(this).text("收起全文");
+					}else{
+						$(this).parent().prev().addClass("mui-ellipsis-2");
+						$(this).text("展开全文");
+					}
+					
+				})
+				
+				//如果无隐藏文字则不显示展开按钮
+				$(".mui-ellipsis-2").each(function(){
+					if (!isEllipsis(this)) {
+						$(this).next().remove();
+					}  
+				})
 
 			});
+			
+
 		</script>
 	</body>
 

@@ -126,7 +126,10 @@
 			"index.html": {
 				"resources": [],
 				"refer": [
-					"html/goods_list.html"
+					"html/goods_list.html",
+					"html/card.html",
+					"html/server.html",
+					"html/userinfo.html"
 				],
 				"priority": 0
 			},
@@ -177,7 +180,6 @@
 				"css/mui.dtpicker.css",
 				"css/mui.picker.all.css",
 				"js/update.js",
-				"html/card.html",
 				"js/feedback.js",
 				"js/arttmpl.js",
 				"js/mui.imageViewer.js",

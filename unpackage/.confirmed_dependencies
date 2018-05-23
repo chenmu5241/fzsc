@@ -1,7 +1,10 @@
 {
 	"index.html": {
 		"refer": [
-			"html/goods_list.html"
+			"html/goods_list.html",
+			"html/card.html",
+			"html/server.html",
+			"html/userinfo.html"
 		],
 		"resources": []
 	},

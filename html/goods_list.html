@@ -36,7 +36,7 @@
 			
 			.mui-btn {
 			    padding: 5px;
-			    margin-bottom: 3px;
+			    margin-bottom: 5px;
 			}
 		</style>
 	</head>
@@ -44,6 +44,88 @@
 	<body>
 		<!--侧滑菜单容器-->
 		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--主内容容器 -->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
+					<h1 class="mui-title">特步特卖</h1>
+				</header>
+				<div class="mui-scroll-wrapper mui-content" id="pullrefresh" style="overflow-y:auto;">
+					<div class="mui-scroll" id="refresh_container">
+						<!--这里放置真实显示的DOM内容-->
+						<ul class="mui-table-view" style="margin-top: 0px;padding: 3px 3px 3px 3px;">
+							<li class="mui-row" id="goodsrow">
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/1.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100.00</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50.00</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:40.00</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/a.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/b.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+											<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/c.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/a.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+								<div class="mui-col-sm-6 mui-col-xs-6">
+									<div style="padding: 1px;">
+										<img width="100%" src="../images/b.jpg" />
+										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
+										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
+										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
+										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+			
+			
+			
 			<!--菜单部分-->
 			<aside id="offCanvasSide" class="mui-off-canvas-right">
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
@@ -59,7 +141,7 @@
 										<div class="mui-collapse-content">
 											<div class="mui-row">
 										        <div class="mui-col-sm-2 mui-col-xs-3">
-										        	<a class="mui-btn  mui-btn-warning"  href="javascript:void(0)">
+										        	<a class="mui-btn"  href="javascript:void(0)">
 														红色
 													</a>
 										        </div>
@@ -87,37 +169,37 @@
 										<a class="mui-navigate-right" href="#">尺码</a>
 										<div class="mui-collapse-content">
 											<div class="mui-row">
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
-										        	<a class="mui-btn  mui-btn-warning"  href="javascript:void(0)" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
+										        	<a class="mui-btn"  href="javascript:void(0)" >
 														36
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														37
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														38
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														39
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														40
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														41
 													</a>
 										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3" >
+										        <div class="mui-col-sm-3 mui-col-xs-3" >
 										        	<a class="mui-btn"  href="javascript:void(0)" >
 														42
 													</a>
@@ -126,83 +208,18 @@
 										</div>
 									</li>
 								</ul>
+								
 							</div>
+							
 						</div>
 					</div>
 				</div>
+				
+				<nav class="mui-bar mui-bar-tab">
+					<a id="reset"  style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">重置</a>
+					<a id="offCanvasHide"  style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-success">确定</a>
+				</nav>
 			</aside>
-			<div class="mui-inner-wrap">
-				<header class="mui-bar mui-bar-nav">
-					<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
-					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
-					<h1 class="mui-title">特步特卖</h1>
-				</header>
-				<div class="mui-scroll-wrapper mui-content" id="pullrefresh" style="overflow-y:auto;">
-					<div class="mui-scroll" id="refresh_container">
-						<!--这里放置真实显示的DOM内容-->
-						<ul class="mui-table-view" style="margin-top: 0px;padding: 3px 3px 3px 3px;">
-							<li class="mui-row" id="goodsrow">
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/1.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/a.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/b.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/c.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/a.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/b.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;">【特步童装】风衣xxx001</p>
-										<span style="margin-left:10px;font-size: 12px;">¥50</span>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">¥100</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
-				<div class="mui-off-canvas-backdrop"></div>
-			</div>
 		</div>
 		<script type="text/javascript" charset="utf-8">
 			function initView() {
@@ -264,6 +281,17 @@
 						$(this).addClass("mui-btn-warning")
 					}
 				})
+				
+				//侧滑容器父节点
+				var offCanvasWrapper = mui('#offCanvasWrapper');
+				//隐藏策划页面
+				document.getElementById('offCanvasHide').addEventListener('tap', function() {
+						offCanvasWrapper.offCanvas('close');
+					});
+				//隐藏策划页面
+				document.getElementById('reset').addEventListener('tap', function() {
+						$("#filter").find(".mui-btn").removeClass("mui-btn-warning");
+				});
 				
 			});
 			

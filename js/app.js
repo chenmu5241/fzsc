@@ -53,4 +53,16 @@
         }
     });
 
+
+	window.initView=function(){
+		mui("body").on("tap", "a", function() {
+			if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript")>-1) {
+				mui.openWindow({
+					url: this.href
+				})
+			}
+		})
+	}
+	
+	
 }(window,jQuery))
