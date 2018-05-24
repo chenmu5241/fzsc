@@ -113,21 +113,8 @@
 
 	</body>
 	<script type="text/javascript" charset="utf-8">
-		function initView() {
-			$("a").each(function() {
-				if(this.href != null && !$(this).hasClass("mui-action-back") && !this.href != "javascript:void(0)") {
-					this.addEventListener("tap", function() {
-						mui.openWindow({
-							url: this.href
-						})
-					})
-				}
-			})
-		}
-
 		mui.init();
 		mui.ready(function() {
-			initView();
 		})
 	</script>
 

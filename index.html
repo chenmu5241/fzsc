@@ -231,9 +231,9 @@
 					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 					<h1 class="mui-title">一品仓</h1>
 					<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
-						<a href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-						<a href="./html/userinfo.html" style="margin-left: 0px;" class="mui-icon mui-icon-person"></a>
-						<a href="./html/server.html" style="margin-left: 0px;" class="mui-icon mui-icon-email"></a>
+						<a id="toCard" href="./html/card.html" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a id="toUserInfo" href="./html/userinfo.html" style="margin-left: 0px;" class="mui-icon mui-icon-person"></a>
+						<a id="toMsgCenter" href="./html/server.html" style="margin-left: 0px;" class="mui-icon mui-icon-email"></a>
 					</div>
 				</header>
 				<div class="mui-scroll-wrapper mui-content" id="pullrefresh">
@@ -286,7 +286,7 @@
 									</div>
 									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
 								</div>
-								<div class="mui-card mui-car-url">收起
+								<div class="mui-card mui-car-url">
 									<div class="mui-card-content">
 										<div class="mui-card-content-inner">
 											<h2>特步  2.5折</h2>
@@ -504,7 +504,7 @@
 			var count = 0;
 			mui.init();
 			mui.ready(function() {
-				initView();
+				//initView();
 				mui.previewImage();//图片预览
 				
 				//初始化scroll组件
@@ -525,7 +525,6 @@
 					up: {
 						auto: false, //默认执行一次上拉加载
 						callback: function() {
-							alert(1)
 							var _self = this;
 							setTimeout(function() {
 								_self.endPullUpToRefresh(count++ > 1); //最后一页加载完成后禁用上拉
@@ -567,6 +566,24 @@
 					if (!isEllipsis(this)) {
 						$(this).next().remove();
 					}  
+				})
+				//到购物车
+				mui("body").on("tap", "#toCard", function() {
+					mui.openWindow({
+						url: "./html/card.html"
+					})
+				})
+				//到个人中心
+				mui("body").on("tap", "#toUserInfo", function() {
+					mui.openWindow({
+						url: "./html/userinfo.html"
+					})
+				})
+				//到消息中心
+				mui("body").on("tap", "#toMsgCenter", function() {
+					mui.openWindow({
+						url: "./html/msgCenter.html"
+					})
 				})
 
 			});
