@@ -17,6 +17,7 @@
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/mui.zoom.js"></script>
 		<script src="../js/mui.previewimage.js"></script>
+		<script src="../js/clipboard-polyfill.js"></script>
 		<style>
 			.mui-preview-image.mui-fullscreen {
 				position: fixed;
@@ -307,8 +308,8 @@
 				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">1</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
-			<a class="mui-tab-item"  id="toChart">
-				<span class="mui-icon mui-icon-chat"></span>
+			<a class="mui-tab-item"  id="toChat">
+				<span class="mui-icon mui-icon-chatbubble"></span>
 				<span class="mui-tab-label">联系客服</span>
 			</a>
 			<a  id="confirmAddCard" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
@@ -422,16 +423,28 @@
 			mui.init();
 			mui.ready(function() {
 				mui.previewImage();
+				
 				//分享
 				mui("body").on("tap", "#shareBtn", function() {
-					plus.share.sendWithSystem({
-						content: '分享内容',
-						href: 'http://www.dcloud.io/'
-					}, function() {
-						console.log('分享成功');
-					}, function(e) {
-						console.log('分享失败：' + JSON.stringify(e));
-					});
+					clipboard.writeText("【特步童装】针织上衣6879496494646,活动价格80.00")
+					mui.confirm("文字内容已复制到剪切板","提示",["确定","取消"],function(e){
+						if(e.index==0){
+							var pictures = [];
+							$("#slider").find("img").each(function(){
+								pictures.push(this.src);
+							})
+							
+							plus.share.sendWithSystem({
+								pictures:pictures,
+								content: '分享内容',
+								href: 'http://www.dcloud.io/'
+							}, function() {
+								console.log('分享成功');
+							}, function(e) {
+								console.log('分享失败：' + JSON.stringify(e));
+							});
+						}
+					})
 				})
 				//到消息中心
 				mui("body").on("tap", "#toMsgCenter", function() {
@@ -485,11 +498,17 @@
 					})
 				})
 				//联系客服页面
-				mui("body").on("tap", "#toChart", function() {
+				mui("body").on("tap", "#toChat", function() {
 					mui.openWindow({
-						url:"chart.html",
+						url:"chat.html",
 						id:"chart"
 					})
+				})
+				
+				mui("body").on("tap","#confirmAddCard",function(){
+					mui.toast("商品已加入购物车!")
+					var num = parseInt($(".mui-icon-extra-cart").children("span").text())+1;
+					$(".mui-icon-extra-cart").children("span").text(num);
 				})
 
 			})

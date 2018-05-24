@@ -66,8 +66,13 @@
 					<input id='password_confirm' type="password" class="mui-input-password" placeholder="请确认密码">
 				</div>
 			</form>
+			
+
 			<div class="mui-content-padded">
 				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+				<div class="mui-input-row mui-checkbox mui-left"><input name="agree" id="agree"  type="checkbox" >
+				  <label style="width: 200px;">我已阅读并同意</label><a style="color: #F0AD4E;" id="regContact">《注册服务协议》</a>
+				</div>
 				<div class="link-area">
 					<a id='login' class="mui-action-back">返回登录</a>
 				</div>
@@ -104,8 +109,16 @@
 						util.hsTime("#sendcodeBt");
 					}
 				})
+				
+				mui("body").on("tap","#regContact",function(){
+					mui.openWindow({
+						url:"./html/contact.html",
+						id:"contact"
+					})
+				})
 
 				mui("body").on("tap", "#reg", function() {
+					
 					if($("#password").val().length < 6 || $("#password").val().length > 30) {
 						mui.toast("密码请输入6-30个字符！")
 						return;
@@ -114,7 +127,11 @@
 						mui.toast("确认密码不正确！");
 						return;
 					}
-
+					if(!$("#agree").prop("checked")){
+						mui.toast("请先同意注册协议！");
+						return;
+					}
+					
 					$.ajax({
 						dataType:"json",
 						type: "get",
