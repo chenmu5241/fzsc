@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>服装商城</title>
+		<script src="../js/mui.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="https://g.alicdn.com/aliww/??h5.imsdk/2.1.0/scripts/yw/wsdk.js,h5.openim.kit/0.3.7/scripts/kit.js" charset="utf-8"></script>
+		<style>
+			.wkit-title{
+				display: none;
+			}
+		</style>
+	
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title">联系客服</h1>
+		</header>
+
+		<div id="mui-content" class="mui-content" style="margin-bottom: 49px;">
+		</div>
+	</body>
+
+	<script>
+		mui.init();
+		mui.ready(function() {
+			  	window.onload = function(){
+                    WKIT.init({
+                        uid: 'root',
+                        appkey: 24732366,
+                        credential: 'xxxxxx',
+                        container: document.getElementById('mui-content'),
+                        autoMsg: '【特步童装】针织上衣6879496494646',
+                        //autoMsgType:1,
+                        touid: '熊园昆', // 在百川控制台设置的E客服主账号
+                        sendMsgToCustomService: true,
+                        groupId:'163428830'
+                    });
+                }
+			
+		})
+	</script>
+
+</html>

@@ -304,15 +304,15 @@
 		</div>
 
 		<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item" href="card.html">
+			<a class="mui-tab-item" id="toCard">
 				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">1</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
-			<a class="mui-tab-item" href="server.html">
+			<a class="mui-tab-item"  id="toChart">
 				<span class="mui-icon mui-icon-chatboxes"></span>
 				<span class="mui-tab-label">联系客服</span>
 			</a>
-			<a  onclick="mui.toast('功能暂未开放')" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
+			<a  id="confirmAddCard" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
 		</nav>
 		<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
 			<header class="mui-bar mui-bar-nav">
@@ -439,6 +439,7 @@
 				mui("body").on("tap", "#chooseBtn", function() {
 					mui('#sheet1').popover('toggle');
 				})
+
 				
 				//确定选择的规则商品
 				mui("body").on("tap", "#confirmChoose", function() {
@@ -467,6 +468,21 @@
 						$(this).addClass("mui-btn-warning")
 						$(this).parent().siblings().find(".mui-btn").removeClass("mui-btn-warning")
 					}
+				})
+				
+				//到购物车页面
+				mui("body").on("tap", "#toCard", function() {
+					mui.openWindow({
+						url:"card.html",
+						id:"card"
+					})
+				})
+				//联系客服页面
+				mui("body").on("tap", "#toChart", function() {
+					mui.openWindow({
+						url:"chart.html",
+						id:"chart"
+					})
 				})
 
 			})
