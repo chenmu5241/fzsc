@@ -1,24 +1,32 @@
 {
-	"index.html": {
-		"refer": [
-			"html/goods_list.html",
-			"html/card.html",
-			"html/server.html",
-			"html/userinfo.html"
-		],
-		"resources": []
-	},
-	"html/goods_list.html": {
-		"refer": [
-			"html/goods_detail.html"
-		],
-		"resources": []
-	},
-	"login.html": {
-		"refer": [
-			"forgetpwd.html",
-			"reg.html",
-			"index.html"
-		]
-	}
+  "index.html": {
+    "refer": [
+      "html/goods_list.html",
+      "html/card.html",
+      "html/server.html",
+      "html/userinfo.html"
+    ],
+    "resources": []
+  },
+  "html/goods_list.html": {
+    "refer": [
+      "html/goods_detail.html"
+    ],
+    "resources": []
+  },
+  "login.html": {
+    "refer": [
+      "forgetpwd.html",
+      "reg.html",
+      "index.html"
+    ],
+    "resources": []
+  },
+  "html/goods_detail.html": {
+    "refer": [
+      "html/chart.html",
+      "html/card.html"
+    ],
+    "resources": []
+  }
 }

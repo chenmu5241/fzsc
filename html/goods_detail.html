@@ -213,11 +213,10 @@
 		<header id="header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">单品详情</h1>
-			<a id="shareBtn" class="mui-icon mui-icon-redo mui-pull-right"></a>
-			<!--			<div class="mui-title-div mui-pull-right">
-				<a href="server.html" style="margin-left: 10px;" class="mui-icon mui-icon-email"></a>
-				<a  onclick="mui.toast('功能暂未开放')" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
-			</div>-->
+			<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
+				<a id="toMsgCenter"   class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+				<a id="shareBtn"  style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
+			</div>
 		</header>
 		<div class="mui-content " style="margin-bottom: 60px;">
 			<div id="slider" class="mui-slider">
@@ -309,7 +308,7 @@
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="mui-tab-item"  id="toChart">
-				<span class="mui-icon mui-icon-chatboxes"></span>
+				<span class="mui-icon mui-icon-chat"></span>
 				<span class="mui-tab-label">联系客服</span>
 			</a>
 			<a  id="confirmAddCard" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
@@ -434,6 +433,14 @@
 						console.log('分享失败：' + JSON.stringify(e));
 					});
 				})
+				//到消息中心
+				mui("body").on("tap", "#toMsgCenter", function() {
+					mui.openWindow({
+						url:"./msgCenter.html",
+						id:"msgCenter"
+					})
+				})
+				
 
 				//选择尺码
 				mui("body").on("tap", "#chooseBtn", function() {
