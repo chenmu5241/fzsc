@@ -9,7 +9,11 @@
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
 		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
 		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/mui.zoom.js"></script>
 		<script src="../js/mui.previewimage.js"></script>
@@ -188,17 +192,31 @@
 				max-width: 100%;
 				height: auto;
 			}
+			
+			
+			.mui-popover.mui-popover-action .mui-table-view {
+			    margin: 8px;
+			    text-align: left;
+			    color: #000000;
+			    border-radius: 4px;
+			}
+			
+			
+			.mui-btn {
+			    padding: 5px;
+			    margin-bottom: 5px;
+			}
 		</style>
 	</head>
 
-	<body >
+	<body>
 		<header id="header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">单品详情</h1>
 			<a id="shareBtn" class="mui-icon mui-icon-redo mui-pull-right"></a>
-<!--			<div class="mui-title-div mui-pull-right">
+			<!--			<div class="mui-title-div mui-pull-right">
 				<a href="server.html" style="margin-left: 10px;" class="mui-icon mui-icon-email"></a>
-				<a href="javascript:void(0)" onclick="mui.toast('功能暂未开放')" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
+				<a  onclick="mui.toast('功能暂未开放')" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
 			</div>-->
 		</header>
 		<div class="mui-content " style="margin-bottom: 60px;">
@@ -206,32 +224,32 @@
 				<div class="mui-slider-group mui-slider-loop">
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a href="javascript:void(0)"> <img height="375" src="../images/c.jpg">
+						<a > <img height="375" src="../images/c.jpg">
 						</a>
 					</div>
 					<!-- 第一张 -->
 					<div class="mui-slider-item">
-						<a href="javascript:void(0)"> <img height="375" src="../images/1.jpg" data-preview-src="" data-preview-group="1">
+						<a > <img height="375" src="../images/1.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第二张 -->
 					<div class="mui-slider-item">
-						<a href="javascript:void(0)"> <img height="375" src="../images/a.jpg" data-preview-src="" data-preview-group="1">
+						<a > <img height="375" src="../images/a.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第三张 -->
 					<div class="mui-slider-item">
-						<a href="javascript:void(0)"> <img height="375" src="../images/b.jpg" data-preview-src="" data-preview-group="1">
+						<a > <img height="375" src="../images/b.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第四张 -->
 					<div class="mui-slider-item">
-						<a href="javascript:void(0)"> <img height="375" src="../images/c.jpg" data-preview-src="" data-preview-group="1">
+						<a > <img height="375" src="../images/c.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a href="javascript:void(0)"> <img src="../images/1.jpg">
+						<a > <img src="../images/1.jpg">
 						</a>
 					</div>
 				</div>
@@ -253,18 +271,18 @@
 				<table width="100%">
 					<tr>
 						<td style="font-weight: bold;padding: 0 5px;" width="80">
-						 规　　格
+							规　　格
 						</td>
 						<td class="mui-table-view-cell">
-							         <a class="mui-navigate-right">已选："红色" "M"</a>
+							<a class="mui-navigate-right" id="chooseBtn">请选择</a>
 						</td>
 					</tr>
 				</table>
-				
+
 			</div>
 			<p style="margin-top: 10px;margin-left: 10px;">购买须知</p>
 			<div class="row" style="background-color:#FAFAFA;font-size: 12px;margin: 0px 10px 0px 10px;">
-				<table width="100%" >
+				<table width="100%">
 					<tr>
 						<td valign="top" style="font-weight: bold;padding: 0 5px;">温馨提示</td>
 						<td>线上线下共用库存请尽快下单购买！如出现购买无货的情况，将为您自动退款。在您签收商品之日起的七天之内，壹品仓为您提供七天无理由放心退服务，除质量问题外的退货需您自行承担运费</td>
@@ -279,7 +297,7 @@
 					</tr>
 				</table>
 			</div>
-<!--			<p style="margin-top: 10px;margin-left: 10px;">商品评价</p>
+			<!--			<p style="margin-top: 10px;margin-left: 10px;">商品评价</p>
 			<div class="row" style="background-color:#FAFAFA;font-size: 12px;margin: 0px 10px 0px 10px;">
 				<input type="text" class="mui-input-range " placeholder="请输入您的评价">
 			</div>-->
@@ -294,33 +312,165 @@
 				<span class="mui-icon mui-icon-chatboxes"></span>
 				<span class="mui-tab-label">联系客服</span>
 			</a>
-			<a href="javascript:void(0)" onclick="mui.toast('功能暂未开放')" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
+			<a  onclick="mui.toast('功能暂未开放')" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
 		</nav>
+		<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+			<header class="mui-bar mui-bar-nav">
+				<a href="#sheet1" class="mui-btn mui-poppicker-btn-cancel">取消</button>
+				<a class="mui-btn mui-btn-blue mui-poppicker-btn-ok" id="confirmChoose">确定</a>
+			</header>
+			<div class="mui-content" style="background-color: #fff;">
+							<div class="mui-card" id="filter">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-collapse mui-active">
+										<a class="mui-navigate-right" >颜色</a>
+										<div class="mui-collapse-content">
+											<div class="mui-row">
+										        <div class="mui-col-sm-2 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														红色
+													</a>
+										        </div>
+										        <div class="mui-col-sm-2 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														黑色
+													</a>
+										        </div>
+										        <div class="mui-col-sm-2 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														黄色
+													</a>
+										        </div>
+										        <div class="mui-col-sm-2 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														蓝色
+													</a>
+										        </div>
+										     </div>
+										</div>
+									</li>
+								</ul>
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-collapse mui-active">
+										<a class="mui-navigate-right" href="#">尺码</a>
+										<div class="mui-collapse-content">
+											<div class="mui-row">
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														36
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														37
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														38
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														39
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														40
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														41
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														42
+													</a>
+										        </div>
+										     </div>
+										</div>
+									</li>
+								</ul>
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell mui-collapse mui-active">
+										<a class="mui-navigate-right" href="#">款式</a>
+										<div class="mui-collapse-content">
+											<div class="mui-row">
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														胖款
+													</a>
+										        </div>
+										        <div class="mui-col-sm-3 mui-col-xs-3">
+										        	<a class="mui-btn" >
+														瘦款
+													</a>
+										        </div>
+										     </div>
+										</div>
+									</li>
+								</ul>
+								
+							</div>
+							
+						</div>
+		</div>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.ready(function() {
+				mui.previewImage();
+				//分享
+				mui("body").on("tap", "#shareBtn", function() {
+					plus.share.sendWithSystem({
+						content: '分享内容',
+						href: 'http://www.dcloud.io/'
+					}, function() {
+						console.log('分享成功');
+					}, function(e) {
+						console.log('分享失败：' + JSON.stringify(e));
+					});
+				})
+
+				//选择尺码
+				mui("body").on("tap", "#chooseBtn", function() {
+					mui('#sheet1').popover('toggle');
+				})
+				
+				//确定选择的规则商品
+				mui("body").on("tap", "#confirmChoose", function() {
+					var count = 1;
+					//先确定尺码是否已经唯一确定一个商品
+					if($("#filter").find(".mui-btn.mui-btn-warning").length>0){
+						mui('#sheet1').popover('hide');
+						var chooseStr = "已选:";
+						$("#filter").find(".mui-btn.mui-btn-warning").each(function(){
+								chooseStr += "\""+$(this).text()+"\" ";
+						})
+						
+						$("#chooseBtn").text(chooseStr);
+					}else{
+						mui.toast("请选择尺码！")
+					}
+					
+				})
+				
+				
+				//折叠面板中的按钮触发事件
+				mui("#filter").on("tap",".mui-btn",function(){
+					if($(this).hasClass("mui-btn-warning")){
+						$(this).removeClass("mui-btn-warning")
+					}else{
+						$(this).addClass("mui-btn-warning")
+						$(this).parent().siblings().find(".mui-btn").removeClass("mui-btn-warning")
+					}
+				})
+
+			})
+		</script>
 	</body>
-	<script src="../js/mui.zoom.js"></script>
-	<script src="../js/mui.previewimage.js"></script>
 
 </html>
-<script type="text/javascript" charset="utf-8">
-	function initView() {
-		mui("body").on("tap", "a", function() {
-			if(this.href != "" && !$(this).hasClass("mui-action-back") && !this.href.indexOf("javascript") > -1) {
-				mui.openWindow({
-					url: this.href
-				})
-			}
-		})
-	}
-
-	mui.init();
-	mui.ready(function() {
-		mui.previewImage();
-			mui("body").on("tap","#shareBtn",function(){
-				plus.share.sendWithSystem({content:'分享内容',href:'http://www.dcloud.io/'}, function(){
-					console.log('分享成功');
-				}, function(e){
-					console.log('分享失败：'+JSON.stringify(e));
-				});
-			})
-	})
-</script>
