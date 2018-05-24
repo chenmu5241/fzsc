@@ -42,9 +42,6 @@
 				margin-bottom: 3px;
 			}
 			
-			
-			
-			
 			.mui-preview-image.mui-fullscreen {
 				position: fixed;
 				z-index: 20;
@@ -238,6 +235,36 @@
 				</header>
 				<div class="mui-scroll-wrapper mui-content" id="pullrefresh">
 					<div class="mui-scroll" id="refresh_container">
+						<div id="slider" style="height:200px;" class="mui-slider">
+							<div class="mui-slider-group mui-slider-loop">
+								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate" style="height:200px;">
+									<a > <img  style="height:200px;" src="./images/appshangxian.png">
+									</a>
+								</div>
+								<!-- 第一张 -->
+								<div class="mui-slider-item" style="height:200px;">
+									<a href="./html/shuoming.html"> <img  style="height:200px;" src="./images/appshangxian.png">
+									</a>
+								</div>
+								<!-- 第二张 -->
+								<div class="mui-slider-item" style="height:200px;">
+									<a href="./html/shuoming.html"> <img style="height:200px;" src="./images/baodianbidu.png">
+									</a>
+								</div>
+								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate" style="height:200px;">
+									<a> <img src="./images/appshangxian.png" style="height:200px;">
+									</a>
+								</div>
+							</div>
+
+							<div class="mui-slider-indicator mui-text-right">
+								<div class="mui-indicator mui-active"></div>
+								<div class="mui-indicator"></div>
+							</div>
+						</div>
+
 						<!--这里放置真实显示的DOM内容-->
 						<ul class="mui-table-view">
 							<li class="mui-row" id="goodsrow">
@@ -252,37 +279,38 @@
 									</div>
 								</div>-->
 
-								
 								<div class="mui-card mui-car-url">
 									<div class="mui-card-content">
 										<div class="mui-card-content-inner">
 											<h2>特步  2.5折</h2>
 											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
 											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
-											<p style="color: #333;"><a  class="expendbtn">展开全文</a></p>
+											<p style="color: #333;">
+												<a class="expendbtn">展开全文</a>
+											</p>
 										</div>
 									</div>
 									<div class="mui-card-header mui-card-media" style="z-index:1;">
-											<div class="mui-row">
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1"/>
-										        </div>
-										     </div>
+										<div class="mui-row">
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+										</div>
 									</div>
 									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
 								</div>
@@ -292,30 +320,32 @@
 											<h2>特步  2.5折</h2>
 											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
 											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力</p>
-											<p style="color: #333;"><a class="expendbtn">展开全文</a></p>
+											<p style="color: #333;">
+												<a class="expendbtn">展开全文</a>
+											</p>
 										</div>
 									</div>
 									<div class="mui-card-header mui-card-media" style="z-index:1;">
-											<div class="mui-row">
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2"/>
-										        </div>
-										     </div>
+										<div class="mui-row">
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
+											</div>
+										</div>
 									</div>
 									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
 								</div>
@@ -325,35 +355,36 @@
 											<h2>特步  2.5折</h2>
 											<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
 											<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，</p>
-											<p style="color: #333;"><a  class="expendbtn">展开全文</a></p>
+											<p style="color: #333;">
+												<a class="expendbtn">展开全文</a>
+											</p>
 										</div>
 									</div>
 									<div class="mui-card-header mui-card-media" style="z-index:1;">
-											<div class="mui-row">
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										        <div class="mui-col-sm-4 mui-col-xs-4" >
-										        	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3"/>
-										        </div>
-										     </div>
+										<div class="mui-row">
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+											</div>
+										</div>
 									</div>
 									<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #DD524D;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>
 								</div>
 
-								
 							</li>
 						</ul>
 					</div>
@@ -362,11 +393,7 @@
 				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
 				<div class="mui-off-canvas-backdrop"></div>
 			</div>
-			
-			
-			
-			
-			
+
 			<!--菜单部分-->
 			<aside id="offCanvasSide" class="mui-off-canvas-left">
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
@@ -376,141 +403,140 @@
 						</header>
 						<div class="mui-content">
 							<ul class="mui-table-view">
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
-							            <div class="mui-media-body">
-							            		特步
-							                <p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
-							            </div>
-							        </a>
-							    </li>
-							    <li class="mui-table-view-cell mui-media">
-							        <a href="javascript:void(0);">
-							            <img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
-							            <div class="mui-media-body">
-							            		阿迪达斯
-							                <p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
-							            </div>
-							        </a>
-							    </li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:void(0);">
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</aside>
 
-			
 		</div>
 		<script type="text/javascript" charset="utf-8">
 			//是否已出现省略号
 			function isEllipsis(dom) {
-					if (dom.scrollHeight > dom.clientHeight) {
-						return true
-					}  
-		        return false;
-		    };
+				if(dom.scrollHeight > dom.clientHeight) {
+					return true
+				}
+				return false;
+			};
 
 			var count = 0;
 			mui.init();
 			mui.ready(function() {
 				//initView();
-				mui.previewImage();//图片预览
-				
+				mui.previewImage(); //图片预览
+
 				//初始化scroll组件
 				var scroll = mui('.mui-scroll-wrapper').scroll({
 					indicators: true,
-				}); 
+				});
 
 				// 刷新组件对象
 				var pullToRefresh = mui('#refresh_container').pullToRefresh({
@@ -549,23 +575,23 @@
 						url: "./html/goods_list.html"
 					})
 				})
-				
-				mui("body").on("tap",".expendbtn",function(){
-					if($(this).text()=="展开全文"){
+
+				mui("body").on("tap", ".expendbtn", function() {
+					if($(this).text() == "展开全文") {
 						$(this).parent().prev().removeClass("mui-ellipsis-2");
 						$(this).text("收起全文");
-					}else{
+					} else {
 						$(this).parent().prev().addClass("mui-ellipsis-2");
 						$(this).text("展开全文");
 					}
-					
+
 				})
-				
+
 				//如果无隐藏文字则不显示展开按钮
-				$(".mui-ellipsis-2").each(function(){
-					if (!isEllipsis(this)) {
+				$(".mui-ellipsis-2").each(function() {
+					if(!isEllipsis(this)) {
 						$(this).next().remove();
-					}  
+					}
 				})
 				//到购物车
 				mui("body").on("tap", "#toCard", function() {
@@ -585,10 +611,14 @@
 						url: "./html/msgCenter.html"
 					})
 				})
+				
+				mui("#slider").on("tap","a",function(){
+					mui.openWindow({
+						url: this.href
+					})
+				})
 
 			});
-			
-
 		</script>
 	</body>
 
