@@ -7,26 +7,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<link rel="stylesheet" href="../css/app.css">
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery.min.js"></script>
-		
+
 		<style>
 			/*跨webview需要手动指定位置*/
+			
 			#topPopover {
 				position: fixed;
 				top: 16px;
 				right: 6px;
 			}
+			
 			#topPopover .mui-popover-arrow {
 				left: auto;
 				right: 6px;
 			}
+			
 			p {
 				text-indent: 22px;
 			}
+			
 			.mui-popover {
 				height: 300px;
 			}
@@ -40,44 +43,52 @@
 		</header>
 		<div class="mui-content">
 			<div class="mui-content-padded">
-					<div class="mui-inline">问题和意见</div>
-					<a class="mui-pull-right mui-inline" href="#popover">
-						快捷输入
-						<span class="mui-icon mui-icon-arrowdown"></span>
-					</a>
-					<!--快捷输入具体内容，开发者可自己替换常用语-->
-					<div id="popover" class="mui-popover">
-						<div class="mui-popover-arrow"></div>
-						<div class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<ul class="mui-table-view">
-									<!--仅流应用环境下显示-->
-									<li class="mui-table-view-cell stream">
-										<a href="#">桌面快捷方式创建失败</a>
-									</li>
-									<li class="mui-table-view-cell"><a href="#">界面显示错乱</a></li>
-									<li class="mui-table-view-cell"><a href="#">启动缓慢，卡出翔了</a></li>
-									<li class="mui-table-view-cell"><a href="#">偶发性崩溃</a></li>
-									<li class="mui-table-view-cell"><a href="#">UI无法直视，丑哭了</a></li>
-								</ul>
-							</div>
+				<div class="mui-inline">问题和意见</div>
+				<a class="mui-pull-right mui-inline" href="#popover">
+					快捷输入
+					<span class="mui-icon mui-icon-arrowdown"></span>
+				</a>
+				<!--快捷输入具体内容，开发者可自己替换常用语-->
+				<div id="popover" class="mui-popover">
+					<div class="mui-popover-arrow"></div>
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<ul class="mui-table-view">
+								<!--仅流应用环境下显示-->
+								<li class="mui-table-view-cell stream">
+									<a href="#">桌面快捷方式创建失败</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#">界面显示错乱</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#">启动缓慢，卡出翔了</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#">偶发性崩溃</a>
+								</li>
+								<li class="mui-table-view-cell">
+									<a href="#">UI无法直视，丑哭了</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="row mui-input-row">
-					<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
-				</div>
-				<p>手机/QQ/邮箱</p>
-				<div class="mui-input-row">
-					<input id='contact' type="text" class="mui-input-clear contact" placeholder="(选填,方便我们联系你 )" />
-				</div>
-				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">提交</button>
+			</div>
+			<div class="row mui-input-row">
+				<textarea id='question' class="mui-input-clear question" placeholder="请详细描述你的问题和意见..."></textarea>
+			</div>
+			<p>手机/QQ/邮箱</p>
+			<div class="mui-input-row">
+				<input id='contact' type="text" class="mui-input-clear contact" placeholder="(选填,方便我们联系你 )" />
+			</div>
+			<button id='login' class="mui-btn mui-btn-block mui-btn-primary">提交</button>
 		</div>
 
 		<script>
 			mui.init();
 			mui.ready(function() {
-				mui("#popover").on("tap","a",function(){
+				mui("#popover").on("tap", "a", function() {
 					$("#question").val(this.text);
 					mui("#popover").popover("hide")
 				})

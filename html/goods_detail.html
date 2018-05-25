@@ -5,7 +5,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>服装商城</title>
-		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.min.css" type="text/css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
 		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
 		<link rel="stylesheet" type="text/css" href="../css/app.css" />
@@ -194,18 +194,16 @@
 				height: auto;
 			}
 			
-			
 			.mui-popover.mui-popover-action .mui-table-view {
-			    margin: 8px;
-			    text-align: left;
-			    color: #000000;
-			    border-radius: 4px;
+				margin: 8px;
+				text-align: left;
+				color: #000000;
+				border-radius: 4px;
 			}
 			
-			
 			.mui-btn {
-			    padding: 5px;
-			    margin-bottom: 5px;
+				padding: 5px;
+				margin-bottom: 5px;
 			}
 		</style>
 	</head>
@@ -215,8 +213,8 @@
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">单品详情</h1>
 			<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
-				<a id="toMsgCenter"   class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-				<a id="shareBtn"  style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
+				<a id="toMsgCenter" class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+				<a id="shareBtn" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
 			</div>
 		</header>
 		<div class="mui-content " style="margin-bottom: 60px;">
@@ -224,32 +222,32 @@
 				<div class="mui-slider-group mui-slider-loop">
 					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a > <img height="375" src="../images/c.jpg">
+						<a> <img height="375" src="../images/c.jpg">
 						</a>
 					</div>
 					<!-- 第一张 -->
 					<div class="mui-slider-item">
-						<a > <img height="375" src="../images/1.jpg" data-preview-src="" data-preview-group="1">
+						<a> <img height="375" src="../images/1.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第二张 -->
 					<div class="mui-slider-item">
-						<a > <img height="375" src="../images/a.jpg" data-preview-src="" data-preview-group="1">
+						<a> <img height="375" src="../images/a.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第三张 -->
 					<div class="mui-slider-item">
-						<a > <img height="375" src="../images/b.jpg" data-preview-src="" data-preview-group="1">
+						<a> <img height="375" src="../images/b.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 第四张 -->
 					<div class="mui-slider-item">
-						<a > <img height="375" src="../images/c.jpg" data-preview-src="" data-preview-group="1">
+						<a> <img height="375" src="../images/c.jpg" data-preview-src="" data-preview-group="1">
 						</a>
 					</div>
 					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
 					<div class="mui-slider-item mui-slider-item-duplicate">
-						<a > <img src="../images/1.jpg">
+						<a> <img src="../images/1.jpg">
 						</a>
 					</div>
 				</div>
@@ -308,115 +306,115 @@
 				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">1</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
-			<a class="mui-tab-item"  id="toChat">
+			<a class="mui-tab-item" id="toChat">
 				<span class="mui-icon mui-icon-chatbubble"></span>
 				<span class="mui-tab-label">联系客服</span>
 			</a>
-			<a  id="confirmAddCard" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
+			<a id="confirmAddCard" style="top: 0px;color: white;" class="mui-tab-item mui-btn mui-btn-danger">加入购物车</a>
 		</nav>
 		<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
 			<header class="mui-bar mui-bar-nav">
 				<a href="#sheet1" class="mui-btn mui-poppicker-btn-cancel">取消</button>
-				<a class="mui-btn mui-btn-blue mui-poppicker-btn-ok" id="confirmChoose">确定</a>
+					<a class="mui-btn mui-btn-blue mui-poppicker-btn-ok" id="confirmChoose">确定</a>
 			</header>
 			<div class="mui-content" style="background-color: #fff;">
-							<div class="mui-card" id="filter">
-								<ul class="mui-table-view">
-									<li class="mui-table-view-cell mui-collapse mui-active">
-										<a class="mui-navigate-right" >颜色</a>
-										<div class="mui-collapse-content">
-											<div class="mui-row">
-										        <div class="mui-col-sm-2 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														红色
-													</a>
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														黑色
-													</a>
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														黄色
-													</a>
-										        </div>
-										        <div class="mui-col-sm-2 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														蓝色
-													</a>
-										        </div>
-										     </div>
-										</div>
-									</li>
-								</ul>
-								<ul class="mui-table-view">
-									<li class="mui-table-view-cell mui-collapse mui-active">
-										<a class="mui-navigate-right" href="#">尺码</a>
-										<div class="mui-collapse-content">
-											<div class="mui-row">
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														36
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														37
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														38
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														39
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														40
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														41
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														42
-													</a>
-										        </div>
-										     </div>
-										</div>
-									</li>
-								</ul>
-								<ul class="mui-table-view">
-									<li class="mui-table-view-cell mui-collapse mui-active">
-										<a class="mui-navigate-right" href="#">款式</a>
-										<div class="mui-collapse-content">
-											<div class="mui-row">
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														胖款
-													</a>
-										        </div>
-										        <div class="mui-col-sm-3 mui-col-xs-3">
-										        	<a class="mui-btn" >
-														瘦款
-													</a>
-										        </div>
-										     </div>
-										</div>
-									</li>
-								</ul>
-								
+				<div class="mui-card" id="filter">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-collapse mui-active">
+							<a class="mui-navigate-right">颜色</a>
+							<div class="mui-collapse-content">
+								<div class="mui-row">
+									<div class="mui-col-sm-2 mui-col-xs-3">
+										<a class="mui-btn">
+											红色
+										</a>
+									</div>
+									<div class="mui-col-sm-2 mui-col-xs-3">
+										<a class="mui-btn">
+											黑色
+										</a>
+									</div>
+									<div class="mui-col-sm-2 mui-col-xs-3">
+										<a class="mui-btn">
+											黄色
+										</a>
+									</div>
+									<div class="mui-col-sm-2 mui-col-xs-3">
+										<a class="mui-btn">
+											蓝色
+										</a>
+									</div>
+								</div>
 							</div>
-							
-						</div>
+						</li>
+					</ul>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-collapse mui-active">
+							<a class="mui-navigate-right" href="#">尺码</a>
+							<div class="mui-collapse-content">
+								<div class="mui-row">
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											36
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											37
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											38
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											39
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											40
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											41
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											42
+										</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-collapse mui-active">
+							<a class="mui-navigate-right" href="#">款式</a>
+							<div class="mui-collapse-content">
+								<div class="mui-row">
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											胖款
+										</a>
+									</div>
+									<div class="mui-col-sm-3 mui-col-xs-3">
+										<a class="mui-btn">
+											瘦款
+										</a>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
 		</div>
 
 		<script type="text/javascript" charset="utf-8">
@@ -426,15 +424,15 @@
 				//分享
 				mui("body").on("tap", "#shareBtn", function() {
 					clipboard.writeText("【特步童装】针织上衣6879496494646,活动价格80.00")
-					mui.confirm("文字内容已复制到剪切板","提示",["确定","取消"],function(e){
-						if(e.index==0){
+					mui.confirm("文字内容已复制到剪切板", "提示", ["确定", "取消"], function(e) {
+						if(e.index == 0) {
 							var pictures = [];
-							$("#slider").find("img").each(function(){
+							$("#slider").find("img").each(function() {
 								pictures.push(this.src);
 							})
-							
+
 							plus.share.sendWithSystem({
-								pictures:pictures,
+								pictures: pictures,
 								content: '分享内容',
 								href: 'http://www.dcloud.io/'
 							}, function() {
@@ -448,65 +446,62 @@
 				//到消息中心
 				mui("body").on("tap", "#toMsgCenter", function() {
 					mui.openWindow({
-						url:"./msgCenter.html",
-						id:"msgCenter"
+						url: "./msgCenter.html",
+						id: "msgCenter"
 					})
 				})
-				
 
 				//选择尺码
 				mui("body").on("tap", "#chooseBtn", function() {
 					mui('#sheet1').popover('toggle');
 				})
 
-				
 				//确定选择的规则商品
 				mui("body").on("tap", "#confirmChoose", function() {
 					var count = 1;
 					//先确定尺码是否已经唯一确定一个商品
-					if($("#filter").find(".mui-btn.mui-btn-warning").length>0){
+					if($("#filter").find(".mui-btn.mui-btn-warning").length > 0) {
 						mui('#sheet1').popover('hide');
 						var chooseStr = "已选:";
-						$("#filter").find(".mui-btn.mui-btn-warning").each(function(){
-								chooseStr += "\""+$(this).text()+"\" ";
+						$("#filter").find(".mui-btn.mui-btn-warning").each(function() {
+							chooseStr += "\"" + $(this).text() + "\" ";
 						})
-						
+
 						$("#chooseBtn").text(chooseStr);
-					}else{
+					} else {
 						mui.toast("请选择尺码！")
 					}
-					
+
 				})
-				
-				
+
 				//折叠面板中的按钮触发事件
-				mui("#filter").on("tap",".mui-btn",function(){
-					if($(this).hasClass("mui-btn-warning")){
+				mui("#filter").on("tap", ".mui-btn", function() {
+					if($(this).hasClass("mui-btn-warning")) {
 						$(this).removeClass("mui-btn-warning")
-					}else{
+					} else {
 						$(this).addClass("mui-btn-warning")
 						$(this).parent().siblings().find(".mui-btn").removeClass("mui-btn-warning")
 					}
 				})
-				
+
 				//到购物车页面
 				mui("body").on("tap", "#toCard", function() {
 					mui.openWindow({
-						url:"card.html",
-						id:"card"
+						url: "card.html",
+						id: "card"
 					})
 				})
 				//联系客服页面
 				mui("body").on("tap", "#toChat", function() {
 					mui.openWindow({
-						url:"chat.html",
-						id:"chart"
+						url: "chat.html",
+						id: "chart"
 					})
 				})
-				
-				mui("body").on("tap","#confirmAddCard",function(){
+
+				mui("body").on("tap", "#confirmAddCard", function() {
 					mui.toast("商品已加入购物车!")
-					var num = parseInt($(".mui-icon-extra-cart").children("span").text())+1;
+					var num = parseInt($(".mui-icon-extra-cart").children("span").text()) + 1;
 					$(".mui-icon-extra-cart").children("span").text(num);
 				})
 

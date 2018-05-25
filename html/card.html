@@ -16,7 +16,7 @@
 	<body>
 		<header id="header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
-			<h1 class="mui-title" >购物车</h1>
+			<h1 class="mui-title">购物车</h1>
 			<div class="mui-title-div mui-pull-right">
 				<a href="#sheet1" style="margin-left: 10px;" id="editBtn" class="mui-icon mui-icon-compose"></a>
 			</div>
@@ -237,23 +237,22 @@
 				<p style="font-size: 14px;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;color:red;">合计:118元</p>
 				<p style="font-size: 12px;padding: 0px 0px 0px 0px;margin: 0px 0px 0px 0px;color: gray;">(不含运费)</p>
 			</div>
-			<a  id="toJiesuan" style="height: 30px;top: 0px;color:white" class="mui-tab-item mui-btn mui-btn-danger">结算</a>
+			<a id="toJiesuan" style="height: 30px;top: 0px;color:white" class="mui-tab-item mui-btn mui-btn-danger">结算</a>
 		</nav>
-		
-		
+
 		<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
-		    <!-- 可选择菜单 -->
-		    <ul class="mui-table-view">
-		      <li class="mui-table-view-cell">
-		        <a id='deleteCheckedBtn' style="color:red">删除已选</a>
-		      </li>
-		    </ul>
-		    <!-- 取消菜单 -->
-		    <ul class="mui-table-view">
-		      <li class="mui-table-view-cell">
-		        <a href="#sheet1"><b>取消</b></a>
-		      </li>
-		    </ul>
+			<!-- 可选择菜单 -->
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a id='deleteCheckedBtn' style="color:red">删除已选</a>
+				</li>
+			</ul>
+			<!-- 取消菜单 -->
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="#sheet1"><b>取消</b></a>
+				</li>
+			</ul>
 		</div>
 
 	</body>
@@ -261,26 +260,24 @@
 	<script>
 		mui.init();
 		mui.ready(function() {
-			mui("body").on("tap","#toJiesuan",function(){
+			mui("body").on("tap", "#toJiesuan", function() {
 				mui.openWindow({
-					url:"./jiesuan.html",
-					id:"jiesuan",
+					url: "./jiesuan.html",
+					id: "jiesuan",
 				})
 			})
-			
-			mui("body").on("tap","#deleteCheckedBtn",function(){
-				mui.alert("要删除"+$("#mui-content").find(":checkbox:checked").length+"个购车信息");
+
+			mui("body").on("tap", "#deleteCheckedBtn", function() {
+				mui.alert("要删除" + $("#mui-content").find(":checkbox:checked").length + "个购车信息");
 			})
-			
+
 		})
-		
-		
-		
-		function changeAll(checkbox){
-			if(checkbox.checked){
-				$("#mui-content").find(":checkbox").prop("checked",true)
-			}else{
-				$("#mui-content").find(":checkbox").prop("checked",false)
+
+		function changeAll(checkbox) {
+			if(checkbox.checked) {
+				$("#mui-content").find(":checkbox").prop("checked", true)
+			} else {
+				$("#mui-content").find(":checkbox").prop("checked", false)
 			}
 		}
 	</script>
