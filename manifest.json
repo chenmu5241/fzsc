@@ -119,7 +119,7 @@
 					"xxhdpi": ""
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":""
+		},"ads":{"rp":false,"splash":false,"push":false,"spot":false}
 	},
 	"dependencies": {
 		"pages": {
