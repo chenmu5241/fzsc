@@ -5,12 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>服装商城</title>
-		<link href="../css/mui.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
-		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
-		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<link type="text/css" href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
 		<script src="../js/mui.js"></script>
 		<script src="../js/jquery.min.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<style>
+
+		</style>
 	</head>
 
 	<body>
@@ -19,11 +23,11 @@
 			<h1 class="mui-title">订单确认</h1>
 		</header>
 
-		<div id="mui-content" class="mui-content" style="margin-bottom: 40px;">
+		<div id="mui-content" class="mui-content" style="margin-bottom: 40px;background-color: #fff;">
 			<div class="mui-row" style="margin-top: 20px;margin-left: 10px;border-bottom:1px solid gainsboro;height: 40px;">
 				<div class="mui-col-sm-3 mui-col-xs-3">收货地址</div>
 				<div class="mui-col-sm-9 mui-col-xs-9 mui-navigate-right">
-					<a class="mui-pull-right" href="address.html" style="margin-right: 30px;color: black;">添加收货地址</a>
+					<a class="mui-pull-right" id="chooseAddressBtn" style="margin-right: 30px;">选择收货地址</a>
 				</div>
 			</div>
 
@@ -40,12 +44,14 @@
 									<div class="mui-col-sm-5 mui-col-xs-5">
 										<p class='' style="margin-left: 5px; margin-top: 0px;margin-bottom: 0px;font-size: 12px; font-weight: 900;">【特步童装】特步童装介绍内容，名称等等内容</p>
 										<p style="margin-left: 5px; margin-top: 5px;margin-bottom: 0px;font-size: 12px;">尺码:100</p>
+										<p style="margin-left: 5px; margin-top: 5px;margin-bottom: 0px;font-size: 12px;">颜色:红</p>
 									</div>
 									<div class="mui-col-sm-4 mui-col-xs-4">
 										<div class="mui-pull-right">
 											<p style="margin-right: 10px; margin-top: 5px; text-decoration: line-through;margin-bottom: 0px;font-size: 12px;color: #888888;">¥100</p>
 											<p style="margin-right: 10px; color: red;margin-top: 5px;margin-bottom: 0px;font-size: 12px;" style="mui-pull-right">¥50</p>
 											<p style="margin-right: 10px; margin-top: 5px;margin-bottom: 0px;font-size: 12px;color: #888888;">x2</p>
+											<p style="margin-left: 5px; margin-top: 5px;margin-bottom: 0px;font-size: 12px;">颜色:红</p>
 										</div>
 									</div>
 								</div>
@@ -84,7 +90,7 @@
 				<div class="mui-row">
 					<div class="mui-col-sm-3 mui-col-xs-3">配送方式</div>
 					<div class="mui-col-sm-9 mui-col-xs-9 mui-navigate-right">
-						<a class="mui-pull-right " style="margin-right: 30px;">中通快递</a>
+						<a class="mui-pull-right" id="chooseSendBtn" style="margin-right: 30px;">中通快递</a>
 					</div>
 				</div>
 			</div>
@@ -124,14 +130,162 @@
 			</div>
 			<div class="mui-tab-item" href="card.html">
 			</div>
-			<a href="goods_detail.html" style="height: 30px;top: 0px;color:white" class="mui-tab-item mui-btn mui-btn-danger">提交订单</a>
+			<a id='confirmBtn' style="height: 30px;top: 0px;color:white" class="mui-tab-item mui-btn mui-btn-danger">提交订单</a>
 		</nav>
 
+		<div id="sheet1" class="mui-popover mui-popover-bottom  mui-popover-action " style="height: 400px;overflow-y: auto;">
+			<header class="mui-bar mui-bar-nav">
+				<a href="#sheet1" class="mui-btn mui-poppicker-btn-cancel">取消</button>
+					<a class="mui-btn mui-btn-blue mui-poppicker-btn-ok" id="confirmChoose">确定</a>
+			</header>
+			<div class="mui-content">
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室（一定要给我圆通快递，不然我不要的）</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mui-row" style="border-bottom:1px solid gainsboro;">
+					<div class=" mui-col-sm-2  mui-col-xs-2 mui-radio" style="vertical-align: bottom;">
+						<input style="top:15px;" name="checkbox" value="Item 1" type="radio">
+					</div>
+					<div class="mui-col-sm-10 mui-col-xs-10">
+						<div class="mui-row">
+							<div class="mui-col-sm-12 mui-col-xs-12">
+								<p>熊园昆 15800418543</p>
+								<p class="mui-collapse-2">上海市长宁区长宁路128弄1206室</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 
 	<script>
 		mui.init();
 		mui.ready(function() {
+			mui("body").on("tap", "#chooseAddressBtn", function() {
+				/*				mui.confirm("还没添加过收货地址", "提示", ["去添加", "取消"], function(e) {
+									if(e.index == 0) {
+										mui.openWindow({
+											url: "address.html",
+											id: "address"
+										})
+									}
+								})*/
+				mui('#sheet1').popover('show');
+			})
+			//选择快递
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: "first",
+				text: "中通"
+			}, {
+				value: "second",
+				text: "圆通"
+			}, {
+				value: "third",
+				text: "顺丰"
+			}])
+			mui("body").on("tap", "#chooseSendBtn", function() {
+				picker.show();
+			})
+			
+			
+			mui("body").on("tap","#confirmBtn",function(){
+				mui.confirm("确定要提交吗？","提示",["确定","取消"],function(e){
+					if(e.index==0){
+						mui.alert("你选择了确定")
+					}
+				})
+			})
+
 		})
 	</script>
 

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>商品列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="../css/pulltorefresh.css" />
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/mui.pullToRefresh.js"></script>
+		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<style>
+			.mui-ellipsis-5 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 5;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 60px;
+				max-width: 60px;
+				height: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title">系统消息</h1>
+		</header>
+		<div class="mui-scroll-wrapper mui-content" id="pullrefresh" style="overflow-y:auto;">
+			<div class="mui-scroll" id="refresh_container">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a id="sysMsg">
+							<img class="mui-media-object mui-pull-left" src="../images/sys.jpg">
+							<div class="mui-media-body">
+								发货提醒
+								<p class="mui-pull-right">2018-05-23 10:00</p>
+								<p class='mui-ellipsis-5'>您的订单已发货，预计5天左右到达！您的订单已发货，预计5天左右到达！</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a id="sysMsg">
+							<img class="mui-media-object mui-pull-left" src="../images/sys.jpg">
+							<div class="mui-media-body">
+								退款提醒
+								<p class="mui-pull-right">2018-05-24 10:00</p>
+								<p class='mui-ellipsis-5'>您的退款已完成，请注意收款短信！</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			var count = 0;
+			mui.init();
+			mui.ready(function() {
+				var scroll = mui('.mui-scroll-wrapper').scroll({
+					indicators: true,
+				}); //初始化scroll组件
+
+				// 刷新组件对象
+				var pullToRefresh = mui('#refresh_container').pullToRefresh({
+					down: {
+						callback: function() {
+							var _self = this;
+							setTimeout(function() {
+								_self.endPullDownToRefresh();
+							}, 1000);
+						}
+					},
+					up: {
+						auto: false, //默认执行一次上拉加载
+						callback: function() {
+							var _self = this;
+							setTimeout(function() {
+								_self.endPullUpToRefresh(count++ > 1); //最后一页加载完成后禁用上拉
+							}, 1000);
+						}
+					}
+				});
+
+				var scroll = mui('.mui-scroll-wrapper').scroll();
+				document.querySelector('.mui-scroll-wrapper').addEventListener('scroll', function(e) {
+					console.log(scroll.y)
+				})
+				//mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
+				$("#goodsrow").children().each(function() {
+					this.addEventListener("tap", function() {
+						mui.openWindow({
+							url: "goods_detail.html"
+						})
+					})
+				})
+				//折叠面板中的按钮触发事件
+				mui("#filter").on("tap", ".mui-btn", function() {
+					if($(this).hasClass("mui-btn-warning")) {
+						$(this).removeClass("mui-btn-warning")
+					} else {
+						$(this).addClass("mui-btn-warning")
+					}
+				})
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -7,6 +7,8 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/app.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<style>
 			.area {
 				margin: 20px auto 0px auto;
@@ -67,14 +69,12 @@
 				</div>
 			</form>
 			<div class="mui-content-padded">
-				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+				<button id='confirm' class="mui-btn mui-btn-block mui-btn-primary">提交</button>
 				<div class="link-area">
-					<a id='login' class="mui-action-back">返回登录</a>
+					<a class="mui-action-back">返回登录</a>
 				</div>
 			</div>
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/jquery.min.js"></script>
 		<script>
 			mui.init();
 			mui.plusReady(function() {});
@@ -98,14 +98,14 @@
 						}
 					}
 				}
-				mui("body").on("tap", "#sendcodeBt", function() {
+				$("#sendcodeBt")[0].addEventListener("tap", function() {
 					if(this.text == "重新发送" || this.text == "获取验证码") {
 						mui.toast("验证码已发送到手机，请注意查收!")
 						util.hsTime("#sendcodeBt");
 					}
 				})
-				
-				mui("body").on("tap", "#reg", function() {
+
+				$("#confirm")[0].addEventListener("tap", function() {
 					if($("#password").val().length < 6 || $("#password").val().length > 30) {
 						mui.toast("密码请输入6-30个字符！")
 						return;
@@ -116,14 +116,14 @@
 					}
 
 					$.ajax({
-						dataType:"json",
+						dataType: "json",
 						type: "get",
 						url: "./json/result.json",
 						data: $("#form").serialize(),
 						success: function(result) {
-							if(result.success){
+							if(result.success) {
 								mui.toast("密码重置成功")
-							}else{
+							} else {
 								mui.toast(result.msg)
 							}
 						},

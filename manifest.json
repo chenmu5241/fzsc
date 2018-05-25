@@ -156,6 +156,43 @@
 					"html/card.html"
 				],
 				"priority": 0
+			},
+			"html/address.html": {
+				"resources": [],
+				"refer": [
+					"html/address_add.html",
+					"html/jiesuan.html",
+					"html/address_edit.html"
+				],
+				"priority": 0
+			},
+			"html/card.html": {
+				"resources": [],
+				"refer": [
+					"html/jiesuan.html"
+				],
+				"priority": 0
+			},
+			"html/jiesuan.html": {
+				"resources": [],
+				"refer": [
+					"html/address.html"
+				],
+				"priority": 0
+			},
+			"html/address_add.html": {
+				"resources": [],
+				"refer": [
+					"html/address.html"
+				],
+				"priority": 0
+			},
+			"html/address_edit.html": {
+				"resources": [],
+				"refer": [
+					"html/address.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {

@@ -14,53 +14,69 @@
 		<script src="https://g.alicdn.com/aliww/??h5.imsdk/2.1.0/scripts/yw/wsdk.js,h5.openim.kit/0.3.7/scripts/kit.js" charset="utf-8"></script>
 		<style>
 			.wkit-msg-content {
-			    border-top: 0px solid #f7f7f7;
-			    position: absolute;
-			    left: 0;
-			    top: 2rem;
-			    width: 100%;
-			    bottom: 2rem;
-			    overflow: auto;
-			    background: #fff;
-			    -webkit-overflow-scrolling: touch;
+				border-top: 0px solid #f7f7f7;
+				position: absolute;
+				left: 0;
+				top: 2rem;
+				width: 100%;
+				bottom: 2rem;
+				overflow: auto;
+				background: #fff;
+				-webkit-overflow-scrolling: touch;
 			}
-			#J_wkitMsgContent{
-				margin-top:44px;
+			
+			#J_wkitMsgContent {
+				margin-top: 44px;
+			}
+			/*登录成功失败提示屏蔽掉*/
+			
+			#J_WkitToast {
+				display: none;
 			}
 		</style>
-	
+
 	</head>
 
 	<body>
-		<div id="mui-content" >
+		<div id="mui-content">
 		</div>
-		
 		<header id="header" class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">联系客服</h1>
 		</header>
+
+		<audio id="audio" src="../mp3/xiaoxi.mp3" style="display: none;"></audio>
 	</body>
 
 	<script>
 		mui.init();
 		mui.ready(function() {
-			  	window.onload = function(){
-                    WKIT.init({
-                        uid: 'root',
-                        appkey: 24732366,
-                        credential: 'xxxxxx',
-                        titleBar:false,
-                        onLoginSuccess:function(){
-                        },
-                        container: document.getElementById('mui-content'),
-                        //autoMsg: '【特步童装】针织上衣6879496494646',
-                        //autoMsgType:1,
-                        touid: '熊园昆', // 在百川控制台设置的E客服主账号
-                        sendMsgToCustomService: true
-                        //groupId:'163428830'
-                    });
-                }
-			
+			var audio = document.getElementById("audio");
+
+			window.onload = function() {
+				WKIT.init({
+					uid: 'root',
+					appkey: 24732366,
+					credential: 'xxxxxx',
+					titleBar: false,
+					onLoginSuccess: function() {
+						mui.toast("登录成功，可以发送消息了!")
+					},
+					onLoginError: function() {
+						mui.toast("登录失败，请关闭重新打开！")
+					},
+					onMsgReceived: function() {
+						audio.play();
+					},
+					container: document.getElementById('mui-content'),
+					//autoMsg: '【特步童装】针织上衣6879496494646',
+					//autoMsgType:1,
+					touid: '熊园昆', // 在百川控制台设置的E客服主账号
+					sendMsgToCustomService: true
+					//groupId:'163428830'
+				});
+			}
+
 		})
 	</script>
 

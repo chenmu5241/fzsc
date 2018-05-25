@@ -7,6 +7,8 @@
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/app.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<style>
 			.area {
 				margin: 20px auto 0px auto;
@@ -66,24 +68,21 @@
 					<input id='password_confirm' type="password" class="mui-input-password" placeholder="请确认密码">
 				</div>
 			</form>
-			
 
 			<div class="mui-content-padded">
 				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
-				<div class="mui-input-row mui-checkbox mui-left"><input name="agree" id="agree"  type="checkbox" >
-				  <label style="width: 200px;">我已阅读并同意</label><a style="color: #F0AD4E;" id="regContact">《注册服务协议》</a>
+				<div class="mui-input-row mui-checkbox mui-left"><input name="agree" id="agree" type="checkbox">
+					<label style="width: 200px;">我已阅读并同意</label>
+					<a style="color: #F0AD4E;" href="html/contract.html">《注册服务协议》</a>
 				</div>
 				<div class="link-area">
-					<a id='login' class="mui-action-back">返回登录</a>
+					<a  class="mui-action-back">返回登录</a>
 				</div>
 			</div>
 		</div>
-		<script src="js/mui.min.js"></script>
-		<script src="js/jquery.min.js"></script>
+
 		<script>
 			mui.init();
-			mui.plusReady(function() {});
-
 			mui.ready(function() {
 				//注册验证码
 				var wait = 60;
@@ -103,22 +102,14 @@
 						}
 					}
 				}
-				mui("body").on("tap", "#sendcodeBt", function() {
+				$("#sendcodeBt")[0].addEventListener("tap", function() {
 					if(this.text == "重新发送" || this.text == "获取验证码") {
 						mui.toast("验证码已发送到手机，请注意查收!")
 						util.hsTime("#sendcodeBt");
 					}
 				})
-				
-				mui("body").on("tap","#regContact",function(){
-					mui.openWindow({
-						url:"./html/contact.html",
-						id:"contact"
-					})
-				})
-
-				mui("body").on("tap", "#reg", function() {
-					
+				//注册
+				$("#reg")[0].addEventListener("tap", function() {
 					if($("#password").val().length < 6 || $("#password").val().length > 30) {
 						mui.toast("密码请输入6-30个字符！")
 						return;
@@ -127,20 +118,20 @@
 						mui.toast("确认密码不正确！");
 						return;
 					}
-					if(!$("#agree").prop("checked")){
+					if(!$("#agree").prop("checked")) {
 						mui.toast("请先同意注册协议！");
 						return;
 					}
-					
+
 					$.ajax({
-						dataType:"json",
+						dataType: "json",
 						type: "get",
 						url: "./json/result.json",
 						data: $("#form").serialize(),
 						success: function(result) {
-							if(result.success){
+							if(result.success) {
 								mui.toast("注册成功")
-							}else{
+							} else {
 								mui.toast(result.msg)
 							}
 						},

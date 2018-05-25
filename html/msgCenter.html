@@ -12,6 +12,13 @@
 		<link rel="stylesheet" type="text/css" href="../css/app.css" />
 		<script src="../js/mui.js"></script>
 		<script src="../js/jquery.min.js"></script>
+		<style>
+			.mui-table-view .mui-media-object {
+			    line-height: 60px;
+			    max-width: 60px;
+			    height: 60px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -23,20 +30,29 @@
 		<div id="mui-content" class="mui-content" style="margin-bottom: 49px;">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:void(0);">
-						<img class="mui-media-object mui-pull-left" src="../images/tblogo.jpg">
+					<a id="sysMsg">
+						<div style="width:70px" class="mui-pull-left">
+							<img class="mui-media-object mui-pull-left" src="../images/sys.jpg">
+							<span class="mui-badge" style="top:-10px;position:relative;margin-left:-25px;background-color: red;">1</span>
+						</div>
 						<div class="mui-media-body">
 							系统消息
-							<p class='mui-ellipsis-2'>您的订单已发货，预计5天左右到达，请保持手机畅通！</p>
+							<p class="mui-pull-right">2018-05-23 10:00</p>
+							<p class='mui-ellipsis-2'>您的订单已发货，预计5天左右到达!您的订单已发货，预计5天左右到达!s您的订单已发货，预计5天左右到达!s您的订单已发货，预计5天左右到达!s
+							</p>
 						</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:void(0);">
-						<img class="mui-media-object mui-pull-left" src="../images/kefu.jpg">
+					<a id="chatMsg">
+						<div style="width:70px" class="mui-pull-left">
+							<img class="mui-media-object mui-pull-left" src="../images/kefu.jpg">
+							<span class="mui-badge" style="top:-10px;position:relative;margin-left:-25px;background-color: red;">1</span>
+						</div>
 						<div class="mui-media-body">
 							客服消息
-							<p class='mui-ellipsis-2'>您反映的问题，我们会尽快处理，给您带来不便非常抱歉!</p>
+							<p class="mui-pull-right">2018-05-23 10:00</p>
+							<p class='mui-ellipsis-2' >您反映的问题，我们会尽快处理!您反映的问题，我们会尽快处理!您反映的问题，我们会尽快处理!您反映的问题，我们会尽快处理!您反映的问题，我们会尽快处理!</p>
 						</div>
 					</a>
 				</li>
@@ -45,20 +61,22 @@
 	</body>
 
 	<script>
-		function initView() {
-			$("a").each(function() {
-				if(this.href != null && !$(this).hasClass("mui-action-back") && !this.href != "javascript:void(0)") {
-					this.addEventListener("tap", function() {
-						mui.openWindow({
-							url: this.href
-						})
-					})
-				}
-			})
-		}
 		mui.init();
 		mui.ready(function() {
-			initView();
+			//系统消息
+			document.getElementById("sysMsg").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "sysMsg.html",
+					id: "msgList"
+				})
+			})
+			//客户聊天
+			document.getElementById("chatMsg").addEventListener("tap", function() {
+				mui.openWindow({
+					url: "chat.html",
+					id: "chat"
+				})
+			})
 		})
 	</script>
 

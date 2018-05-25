@@ -21,8 +21,7 @@
 				<a href="address_add.html" class="mui-btn mui-btn-primary">新增</a>
 			</div>
 		</header>
-		
-		
+
 		<div id="mui-content" class="mui-content" style="margin-bottom: 60px;">
 			<div class="mui-row">
 				<div class="mui-card">
@@ -71,19 +70,38 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
 	</body>
 
 	<script>
 		mui.init();
 		mui.ready(function() {
-			$(".deleteBtn").each(function(){
-				this.addEventListener("tap",function(){
-					alert("删除")
+			//删除
+			mui("body").on("tap", ".deleteBtn", function() {
+				mui.confirm("确定要删除吗?", "提示", ["确定", "取消"], function(e) {
+					if(e.index == 0) {
+						mui.alert("你选择了确定")
+					}
+				})
+			})
+			//到新增页面
+			mui("body").on("tap", "#toAddBtn", function() {
+				mui.openWindow({
+					url: "address_add.html",
+					id: "addressAdd"
+				})
+			})
+			//到新增页面
+			mui("body").on("tap", ".editBtn", function() {
+				mui.openWindow({
+					url: "address_edit.html",
+					id: "addressEdit"
 				})
 			})
 		})
+
+		function deleteAddresss(id) {
+
+		}
 	</script>
+
 </html>

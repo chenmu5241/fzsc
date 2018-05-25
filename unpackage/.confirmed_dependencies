@@ -1,32 +1,59 @@
 {
-  "index.html": {
-    "refer": [
-      "html/goods_list.html",
-      "html/card.html",
-      "html/server.html",
-      "html/userinfo.html"
-    ],
-    "resources": []
-  },
-  "html/goods_list.html": {
-    "refer": [
-      "html/goods_detail.html"
-    ],
-    "resources": []
-  },
-  "login.html": {
-    "refer": [
-      "forgetpwd.html",
-      "reg.html",
-      "index.html"
-    ],
-    "resources": []
-  },
-  "html/goods_detail.html": {
-    "refer": [
-      "html/chart.html",
-      "html/card.html"
-    ],
-    "resources": []
-  }
+	"index.html": {
+		"refer": [
+			"html/goods_list.html",
+			"html/card.html",
+			"html/server.html",
+			"html/userinfo.html"
+		],
+		"resources": []
+	},
+	"html/goods_list.html": {
+		"refer": [
+			"html/goods_detail.html"
+		],
+		"resources": []
+	},
+	"login.html": {
+		"refer": [
+			"forgetpwd.html",
+			"reg.html",
+			"index.html"
+		],
+		"resources": []
+	},
+	"html/goods_detail.html": {
+		"refer": [
+			"html/chart.html",
+			"html/card.html"
+		],
+		"resources": []
+	},
+	"html/address.html": {
+		"refer": [
+			"html/address_add.html",
+			"html/jiesuan.html",
+			"html/address_edit.html"
+		]
+	},
+	"html/card.html": {
+		"refer": [
+			"html/jiesuan.html"
+		]
+	},
+	"html/jiesuan.html": {
+		"refer": [
+			"html/address.html"
+		]
+	},
+	"html/address_add.html": {
+		"refer": [
+			"html/address.html"
+		]
+	},
+	"html/address_edit.html": {
+		"refer": [
+			"html/address.html"
+		]
+	}
 }

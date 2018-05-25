@@ -230,7 +230,7 @@
 		<nav class="mui-bar mui-bar-tab">
 			<div class="mui-tab-item" href="card.html">
 				<div class="mui-input-row mui-checkbox mui-left" style="height: 35px;">
-					<label style="padding-left: 18px;">全选 <input id="checkAll" name="checkbox" value="Item 2" type="checkbox"></label>
+					<label style="padding-left: 18px;">全选 <input id="checkAll" onchange="changeAll(this)" name="checkbox" value="Item 2" type="checkbox"></label>
 				</div>
 			</div>
 			<div class="mui-tab-item" href="javascript:void(0)">
@@ -245,7 +245,7 @@
 		    <!-- 可选择菜单 -->
 		    <ul class="mui-table-view">
 		      <li class="mui-table-view-cell">
-		        <a href="#" style="color:red">删除已选</a>
+		        <a id='deleteCheckedBtn' style="color:red">删除已选</a>
 		      </li>
 		    </ul>
 		    <!-- 取消菜单 -->
@@ -261,21 +261,28 @@
 	<script>
 		mui.init();
 		mui.ready(function() {
-			mui("body").on("tap","#checkAll",function(){
-				if(!$(this).prop("checked")){
-					$("#mui-content").find(":checkbox").prop("checked",true)
-				}else{
-					$("#mui-content").find(":checkbox").prop("checked",false)
-				}
-				
-			})
 			mui("body").on("tap","#toJiesuan",function(){
 				mui.openWindow({
 					url:"./jiesuan.html",
-					id:"jiesuan"
+					id:"jiesuan",
 				})
 			})
+			
+			mui("body").on("tap","#deleteCheckedBtn",function(){
+				mui.alert("要删除"+$("#mui-content").find(":checkbox:checked").length+"个购车信息");
+			})
+			
 		})
+		
+		
+		
+		function changeAll(checkbox){
+			if(checkbox.checked){
+				$("#mui-content").find(":checkbox").prop("checked",true)
+			}else{
+				$("#mui-content").find(":checkbox").prop("checked",false)
+			}
+		}
 	</script>
 
 </html>

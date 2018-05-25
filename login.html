@@ -33,8 +33,8 @@
 			<div class="mui-content-padded">
 				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
 				<div class="link-area">
-					<a id='reg'>注册账号</a> <span class="spliter">|</span>
-					<a id='forgetPassword'>忘记密码</a>
+					<a href="reg.html">注册账号</a> <span class="spliter">|</span>
+					<a href="forgetpwd.html">忘记密码</a>
 				</div>
 			</div>
 			<div class="mui-content-padded oauth-area">
@@ -62,29 +62,21 @@
 					}, 1000);
 					return false;
 				};
-				//到注册页面
-				mui("body").on("tap", "#reg", function() {
-					mui.openWindow({
-						url: "./reg.html",
-						id: "reg"
-					})
-				})
 				//登录
-				mui("body").on("tap", "#login", function() {
-					if($("#phone").val()=="" ||  !/1[1-9]\d{9}/.test($("#phone").val())){
+				document.getElementById("login").addEventListener("tap", function() {
+					if($("#phone").val() == "" || !/1[1-9]\d{9}/.test($("#phone").val())) {
 						mui.toast("请输入有效手机号！");
 						return false;
 					}
-					if( $("#password").val() == ""){
+					if($("#password").val() == "") {
 						mui.toast("请输入密码！");
 						return false;
 					}
-					
 					$.ajax({
 						type: "get",
 						url: "./json/result.json",
 						data: $("#form").serialize(),
-						dataType:"json",
+						dataType: "json",
 						success: function(result) {
 							if(result.success) {
 								mui.openWindow({
@@ -99,17 +91,10 @@
 							mui.toast("请求遇到问题!")
 						}
 					});
-
-				})
-				//到忘记密码页面
-				mui("body").on("tap", "#forgetPassword", function() {
-					mui.openWindow({
-						url: "./forgetpwd.html",
-						id: "index"
-					})
 				})
 
 			})
 		</script>
 	</body>
+
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE >
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>服装商城</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/app.css">
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<header id="header" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+			<h1 class="mui-title">个人信息设置</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" id="form">
+				<div class="mui-input-row">
+					<label>手机号</label>
+					<input id='account' type="text" value="15800418543" readonly="readonly" class=" mui-input" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row">
+					<label>姓名</label>
+					<input id='name' type="email" class="mui-input-clear mui-input" placeholder="姓名">
+				</div>
+				<div class="mui-input-row">
+					<label>QQ号</label>
+					<input id='qq' type="email" class="mui-input-clear mui-input" placeholder="qq号">
+				</div>
+				<div class="mui-input-row">
+					<label>邮箱</label>
+					<input id='email' type="email" class="mui-input-clear mui-input" placeholder="邮箱">
+				</div>
+				<div class="mui-input-row">
+					<label>密码</label>
+					<input id='password' type="password" class="mui-input-password" placeholder="请输入密码">
+				</div>
+				<div class="mui-input-row">
+					<label>确认</label>
+					<input id='password_confirm' type="password" class="mui-input-password" placeholder="请确认密码">
+				</div>
+			</form>
+			<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+			</div>
+		</div>
+
+		<script>
+			mui.init();
+			mui.ready(function() {})
+		</script>
+	</body>
+
+</html>
