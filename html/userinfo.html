@@ -82,32 +82,29 @@
 			</ul>
 			<div class="mui-table-view mui-table-view-chevron">
 				<div class="mui-table-view-cell ">
-					<a href="order.html" class="mui-navigate-right">全部订单</a>
+					<a id="toOrder" class="mui-navigate-right" >全部订单</a>
 				</div>
-				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="width: 100%;">
-					<div class="mui-scroll" id="orderScroll">
-						<a class="mui-control-item" style="padding: 0 8px;">
+				
+				<div id="slider" class="mui-slider">
+					<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+						<a class="mui-control-item" orderstate="1" href="#item2mobile">
 							待付款
-							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
 						</a>
-						<a class="mui-control-item" style="padding: 0 8px;">
+						<a class="mui-control-item" orderstate="2" href="#item3mobile">
 							待发货
-							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
 						</a>
-						<a class="mui-control-item" style="padding: 0 8px;">
+						<a class="mui-control-item" orderstate="3" href="#item4mobile">
 							已发货
-							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
 						</a>
-						<a class="mui-control-item" style="padding: 0 8px;">
+						<a class="mui-control-item" orderstate="4" href="#item5mobile">
 							待评价
-							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
 						</a>
-						<a class="mui-control-item" style="padding: 0 8px;">
+						<a class="mui-control-item" orderstate="5" href="#item6mobile">
 							退货退款
-							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
 						</a>
 					</div>
 				</div>
+				
 			</div>
 			<ul class="mui-table-view mui-table-view-chevron">
 				<li class="mui-table-view-cell">
@@ -156,23 +153,30 @@
 					id: "msgCenter"
 				})
 			})
-			//到消息中心
+			//退出登录
 			document.getElementById("logoutBtn").addEventListener("tap", function() {
 				myLocalStorage.removeItem("user");
-				mui.openWindow({
-					url: "../login.html",
-					id: "login"
-				})
+				location.href = "./login.html";
 			})
-			$("#orderScroll").children().each(function() {
+			//到订单中心
+			$("#sliderSegmentedControl").children().each(function() {
 				this.addEventListener("tap", function() {
+					myLocalStorage.setItem("orderstate",$(this).attr("orderstate"));
 					mui.openWindow({
-						url: "./order.html",
+						url: "order.html",
 						id: "order"
 					})
+
 				})
 			})
-
+			//到订单中心
+			document.getElementById("toOrder").addEventListener("tap" , function() {
+				myLocalStorage.setItem("orderstate",0);
+				mui.openWindow({
+					url: "order.html",
+					id: "order"
+				})
+			})
 			//刷新角标数字
 			window.addEventListener("refreshCartNum", function(event) {
 				refreshCartNum(event.detail.num);

@@ -201,7 +201,8 @@
 			"html/userinfo.html": {
 				"resources": [],
 				"refer": [
-					"login.html"
+					"login.html",
+					"html/order.html"
 				],
 				"priority": 0
 			}

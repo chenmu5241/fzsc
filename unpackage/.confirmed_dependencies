@@ -62,7 +62,8 @@
 	},
 	"html/userinfo.html": {
 		"refer": [
-			"login.html"
+			"login.html",
+			"html/order.html"
 		]
 	}
 }
