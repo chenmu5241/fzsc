@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="../js/app.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
 		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
 		<link rel="stylesheet" type="text/css" href="../css/pulltorefresh.css" />
@@ -16,6 +17,11 @@
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/mui.pullToRefresh.js"></script>
 		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript">
+			if(!isLogin()) {
+				location.href = "../login.html";
+			}
+		</script>
 		<style>
 			.mui-off-canvas-left,
 			.mui-off-canvas-right {
@@ -132,26 +138,26 @@
 							<div class="mui-card" id="filter">
 								<ul class="mui-table-view">
 									<li class="mui-table-view-cell mui-collapse mui-active">
-										<a class="mui-navigate-right" >颜色</a>
+										<a class="mui-navigate-right">颜色</a>
 										<div class="mui-collapse-content">
 											<div class="mui-row">
 												<div class="mui-col-sm-2 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														红色
 													</a>
 												</div>
 												<div class="mui-col-sm-2 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														黑色
 													</a>
 												</div>
 												<div class="mui-col-sm-2 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														黄色
 													</a>
 												</div>
 												<div class="mui-col-sm-2 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														蓝色
 													</a>
 												</div>
@@ -165,37 +171,37 @@
 										<div class="mui-collapse-content">
 											<div class="mui-row">
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														36
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														37
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														38
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														39
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														40
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														41
 													</a>
 												</div>
 												<div class="mui-col-sm-3 mui-col-xs-3">
-													<a class="mui-btn" >
+													<a class="mui-btn">
 														42
 													</a>
 												</div>
@@ -253,7 +259,8 @@
 				$("#goodsrow").children().each(function() {
 					this.addEventListener("tap", function() {
 						mui.openWindow({
-							url: "goods_detail.html"
+							url: "goods_detail.html",
+							id : "goodsDetail"
 						})
 					})
 				})

@@ -1,5 +1,5 @@
-(function(window,$){
-	window.baseUrl  = "/fmmapp/";
+(function(window){
+	window.baseUrl  = "/fzsc/";
 	window.bgBaseUrl = "http://192.168.1.154:8080/fmmapp/";//全局记录服务器端地址
 	
 	//封装localStorage
@@ -19,6 +19,9 @@
 		}catch(e){
 		}
 		return value;
+	}
+	myLocalStorage.removeItem = function(key){
+		localStorage.removeItem(key);
 	}
 	
 	//封装sessionStorage
@@ -43,7 +46,7 @@
     
     
     //请求拦截
-    $.ajaxSetup({
+/*    $.ajaxSetup({
         type: "POST",
         beforeSend: function (evt, request, settings) {
             request.url = bgBaseUrl + request.url;
@@ -51,7 +54,7 @@
         error: function (jqXHR, textStatus, errorThrown) {
         	mui.toast("请求数据异常！")
         }
-    });
+    });*/
 
 
 	window.initView=function(){
@@ -64,5 +67,21 @@
 		})
 	}
 	
+	window.isLogin = function(){
+		if(myLocalStorage.getItem("user")==null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
-}(window,jQuery))
+	//刷新角标数据
+	window.refreshCartNum = function(num){
+		$(".cartNum").text(num)
+	}
+	//刷新角标数据
+	window.refreshChatNum = function(num){
+		$(".chatNum").text(num)
+	}
+	
+}(window))

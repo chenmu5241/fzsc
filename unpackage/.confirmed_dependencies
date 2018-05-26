@@ -4,7 +4,10 @@
 			"html/goods_list.html",
 			"html/card.html",
 			"html/server.html",
-			"html/userinfo.html"
+			"html/userinfo.html",
+			"login.html",
+			"html/msgCenter.html",
+			"html/goods_detail.html"
 		],
 		"resources": []
 	},
@@ -18,7 +21,8 @@
 		"refer": [
 			"forgetpwd.html",
 			"reg.html",
-			"index.html"
+			"index.html",
+			"html/goods_detail.html"
 		],
 		"resources": []
 	},
@@ -54,6 +58,11 @@
 	"html/address_edit.html": {
 		"refer": [
 			"html/address.html"
+		]
+	},
+	"html/userinfo.html": {
+		"refer": [
+			"login.html"
 		]
 	}
 }

@@ -14,11 +14,16 @@
 		<link rel="stylesheet" type="text/css" href="./css/app.css" />
 		<script src="./js/mui.min.js"></script>
 		<script src="./js/jquery.min.js"></script>
+		<script src="./js/app.js"></script>
 		<script src="./js/mui.pullToRefresh.js"></script>
 		<script src="./js/mui.pullToRefresh.material.js"></script>
-		<script src="./js/app.js"></script>
 		<script src="./js/mui.zoom.js"></script>
 		<script src="./js/mui.previewimage.js"></script>
+		<script type="text/javascript">
+			if(!isLogin()) {
+				location.href = "login.html";
+			}
+		</script>
 		<style>
 			.mui-off-canvas-left,
 			.mui-off-canvas-right {
@@ -225,8 +230,8 @@
 					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 					<h1 class="mui-title">一品仓</h1>
 					<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
-						<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-						<a id="toMsgCenter" style="margin-left: 3px;" class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px; margin-left:-18px;">1</span></a>
+						<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge cartNum" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a id="toMsgCenter" style="margin-left: 3px;" class="mui-icon mui-icon-chatboxes "><span class="mui-badge chatNum" style="top:5px; margin-left:-18px;">1</span></a>
 						<a id="toUserInfo" style="margin-left: 3px;" class="mui-icon mui-icon-person"></a>
 					</div>
 				</header>
@@ -435,7 +440,7 @@
 			};
 
 			var count = 0;
-			mui.init();
+			mui.init({});
 			mui.ready(function() {
 				//重写返回按钮
 				var backButtonPress = 0;
@@ -489,7 +494,7 @@
 				mui("body").on("tap", ".buy", function() {
 					mui.openWindow({
 						url: "./html/goods_list.html",
-						id: "goodsDetail"
+						id: "goodsList"
 					})
 				})
 				//折叠面板中的按钮触发事件
@@ -544,8 +549,66 @@
 						url: this.href
 					})
 				})
+				//刷新角标数字
+				window.addEventListener("refreshCartNum", function(event) {
+					refreshCartNum(event.detail.num);
+				})
+				window.addEventListener("refreshChatNum", function(event) {
+					refreshChatNum(event.detail.num);
+				})
 
 			});
+
+			mui.plusReady(function() {
+				//首先获得目标页面的对象
+				var indexWv = null;
+				var userinfoWv = null;
+				var goodsDetailWV = null;
+				//定时刷新消息的角标内容
+				setInterval(function() {
+					if(indexWv == null) {
+						indexWv = plus.webview.getWebviewById('index');
+					}
+					if(userinfoWv == null) {
+						userinfoWv = plus.webview.getWebviewById('userinfo');
+					}
+					if(goodsDetailWV == null) {
+						goodsDetailWV = plus.webview.getWebviewById('goods_detail.html');
+					}
+					if(indexWv != null) {
+						mui.fire(indexWv, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(indexWv, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+
+					if(userinfoWv != null) {
+						mui.fire(userinfoWv, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(userinfoWv, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+					if(goodsDetailWV != null) {
+						mui.fire(goodsDetailWV, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(goodsDetailWV, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+				}, 10000);
+
+			})
 		</script>
 	</body>
 

@@ -15,9 +15,15 @@
 		<script src="../js/mui.picker.js"></script>
 		<script src="../js/mui.poppicker.js"></script>
 		<script src="../js/jquery.min.js"></script>
+		<script src="../js/app.js"></script>
 		<script src="../js/mui.zoom.js"></script>
 		<script src="../js/mui.previewimage.js"></script>
 		<script src="../js/clipboard-polyfill.js"></script>
+		<script type="text/javascript">
+			if(!isLogin()) {
+				location.href = "../login.html";
+			}
+		</script>
 		<style>
 			.mui-preview-image.mui-fullscreen {
 				position: fixed;
@@ -213,7 +219,7 @@
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">单品详情</h1>
 			<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
-				<a id="toMsgCenter" class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
+				<a id="toMsgCenter" class="mui-icon mui-icon-chatboxes"><span class="mui-badge chatNum" style="top:5px;    margin-left:-18px;">1</span></a>
 				<a id="shareBtn" style="margin-left: 10px;" class="mui-icon mui-icon-redo"></a>
 			</div>
 		</header>
@@ -303,7 +309,7 @@
 
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item" id="toCard">
-				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">1</span></span>
+				<span class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge cartNum">1</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</a>
 			<a class="mui-tab-item" id="toChat">
@@ -503,6 +509,14 @@
 					mui.toast("商品已加入购物车!")
 					var num = parseInt($(".mui-icon-extra-cart").children("span").text()) + 1;
 					$(".mui-icon-extra-cart").children("span").text(num);
+				})
+
+				//刷新角标数字
+				window.addEventListener("refreshCartNum", function(event) {
+					refreshCartNum(event.detail.num);
+				})
+				window.addEventListener("refreshChatNum", function(event) {
+					refreshChatNum(event.detail.num);
 				})
 
 			})

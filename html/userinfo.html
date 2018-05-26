@@ -11,6 +11,12 @@
 		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
 		<script src="../js/mui.min.js "></script>
 		<script src="../js/jquery.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript">
+			if(!isLogin()) {
+				location.href = "../login.html";
+			}
+		</script>
 		<style>
 			html,
 			body {
@@ -56,8 +62,8 @@
 			<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
 			<h1 class="mui-title">个人中心</h1>
 			<div class="mui-title-div mui-pull-right">
-				<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" style="top:5px;    margin-left:-18px;">1</span></a>
-				<a id="toMsgCenter" style="margin-left: 3px;" class="mui-icon mui-icon-chatboxes"><span class="mui-badge" style="top:5px; margin-left:-18px;">1</span></a>
+				<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge cartNum" style="top:5px;    margin-left:-18px;">1</span></a>
+				<a id="toMsgCenter" style="margin-left: 3px;" class="mui-icon mui-icon-chatboxes"><span class="mui-badge chatNum" style="top:5px; margin-left:-18px;">1</span></a>
 			</div>
 		</header>
 		<!--页面标题栏结束-->
@@ -65,7 +71,7 @@
 		<div class="mui-content">
 			<ul class="mui-table-view mui-table-view-chevron">
 				<li class="mui-table-view-cell mui-media">
-					<a class="mui-navigate-right" href="setting.html" >
+					<a class="mui-navigate-right" href="setting.html">
 						<img class="mui-media-object mui-pull-left head-img" id="head-img" src="../images/kf.jpg">
 						<div class="mui-media-body">
 							熊园昆
@@ -78,8 +84,8 @@
 				<div class="mui-table-view-cell ">
 					<a href="order.html" class="mui-navigate-right">全部订单</a>
 				</div>
-				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="width: 100%;" id="segmented">
-					<div class="mui-scroll">
+				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="width: 100%;">
+					<div class="mui-scroll" id="orderScroll">
 						<a class="mui-control-item" style="padding: 0 8px;">
 							待付款
 							<!--<span class="mui-badge" style="top:-10px;position:relative;margin-left:-10px;background-color: red;">1</span>-->
@@ -105,7 +111,7 @@
 			</div>
 			<ul class="mui-table-view mui-table-view-chevron">
 				<li class="mui-table-view-cell">
-					<a href="address.html"  class="mui-navigate-right">收货地址管理</a>
+					<a href="address.html" class="mui-navigate-right">收货地址管理</a>
 				</li>
 				<!--				<li class="mui-table-view-cell">
 					<a  onclick="mui.toast('功能暂未开放')" class="mui-navigate-right">分享壹品仓</a>
@@ -114,7 +120,7 @@
 					<a  onclick="mui.toast('功能暂未开放')" class="mui-navigate-right">我的评论</a>
 				</li>-->
 				<li class="mui-table-view-cell">
-					<a  onclick="mui.toast('功能暂未开放')" class="mui-navigate-right">升级vip</a>
+					<a onclick="mui.toast('功能暂未开放')" class="mui-navigate-right">升级vip</a>
 				</li>
 				<li class="mui-table-view-cell">
 					<a href="chat.html" class="mui-navigate-right">联系客服</a>
@@ -126,6 +132,10 @@
 					<a href="about.html" class="mui-navigate-right">关于</a>
 				</li>
 			</ul>
+
+			<div class="mui-content-padded">
+				<button id='logoutBtn' class="mui-btn mui-btn-block mui-btn-danger">注销</button>
+			</div>
 		</div>
 
 	</body>
@@ -145,6 +155,30 @@
 					url: "msgCenter.html",
 					id: "msgCenter"
 				})
+			})
+			//到消息中心
+			document.getElementById("logoutBtn").addEventListener("tap", function() {
+				myLocalStorage.removeItem("user");
+				mui.openWindow({
+					url: "../login.html",
+					id: "login"
+				})
+			})
+			$("#orderScroll").children().each(function() {
+				this.addEventListener("tap", function() {
+					mui.openWindow({
+						url: "./order.html",
+						id: "order"
+					})
+				})
+			})
+
+			//刷新角标数字
+			window.addEventListener("refreshCartNum", function(event) {
+				refreshCartNum(event.detail.num);
+			})
+			window.addEventListener("refreshChatNum", function(event) {
+				refreshChatNum(event.detail.num);
 			})
 		})
 	</script>
