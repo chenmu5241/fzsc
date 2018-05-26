@@ -32,8 +32,8 @@
 			<div class="mui-row">
 				<div class="mui-card">
 					<div class="mui-card-content-inner">
-						<p>刁冬梅 18837030749</p>
-						河南省商丘市夏邑县吉阳镇及西村积极水电费第三方水电费水电费第三方
+						<p>熊园昆 15800418543</p>
+						上海市长宁区长宁路1220弄1221室
 					</div>
 					<div class="mui-card-footer" style="border-bottom:solid 1px #c8c7cc;">
 						<div class="mui-row">
@@ -52,14 +52,14 @@
 				</div>
 				<div class="mui-card">
 					<div class="mui-card-content-inner">
-						<p>刁冬梅 18837030749</p>
-						河南省商丘市夏邑县吉阳镇及西村积极水电费第三方水电费水电费第三方
+						<p>熊园昆 15800418543</p>
+						上海市长宁区长宁路1220弄1221室
 					</div>
 					<div class="mui-card-footer" style="border-bottom:solid 1px #c8c7cc;">
 						<div class="mui-row">
 							<div class="mui-input-row mui-radio mui-left">
 								<label>默认收货地址</label>
-								<input name="radio1" onchange="mui.toast('你修改了默认收货地址')" value="Item 1" type="radio" checked>
+								<input name="radio1" onchange="mui.toast('你修改了默认收货地址')" value="Item 1" type="radio" >
 							</div>
 						</div>
 						<div class="mui-row">
@@ -84,7 +84,11 @@
 		mui.ready(function() {
 			$(".deleteBtn").each(function() {
 				this.addEventListener("tap", function() {
-					alert("删除")
+					mui.confirm("确定要删除吗","提示",["确定","取消"],function(e){
+						if(e.index == 0){
+							mui.alert("你选择了删除");
+						}
+					})
 				})
 			})
 		})
