@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>商品列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="./css/icons-extra.css" />
+		<link rel="stylesheet" type="text/css" href="./css/pulltorefresh.css" />
+		<link rel="stylesheet" type="text/css" href="./css/app.css" />
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/jquery.min.js"></script>
+		<script src="./js/app.js"></script>
+		<script src="./js/mui.pullToRefresh.js"></script>
+		<script src="./js/mui.pullToRefresh.material.js"></script>
+		<script src="./js/mui.zoom.js"></script>
+		<script src="./js/mui.previewimage.js"></script>
+		<script type="text/javascript">
+			if(!isLogin()) {
+				location.href = "login.html";
+			}
+		</script>
+		<style>
+			.mui-off-canvas-left,
+			.mui-off-canvas-right {
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				bottom: 0;
+				visibility: hidden;
+				box-sizing: content-box;
+				width: 70%;
+				min-height: 100%;
+				background: #fff;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+				margin-bottom: 3px;
+			}
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--侧滑菜单容器-->
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+			<!--主页部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<h1 class="mui-title"></h1>
+					<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
+						<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge cartNum" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a id="toMsgCenter" style="margin-left: 3px;" class="mui-icon mui-icon-chatboxes "><span class="mui-badge chatNum" style="top:5px; margin-left:-18px;">1</span></a>
+						<a id="toUserInfo" style="margin-left: 3px;" class="mui-icon mui-icon-person"></a>
+					</div>
+				</header>
+				<div class="mui-scroll-wrapper mui-content">
+					<div id="slider" class="mui-slider">
+						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<a class="mui-control-item mui-active"  href="#">
+								直播
+							</a>
+							<a class="mui-control-item" href="#">
+								预告
+							</a>
+						</div>
+
+						<div class="mui-slider-group">
+							<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+
+								<div class="mui-scroll" id="refresh_container1">
+
+									<div class="mui-card mui-car-url">
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<h2>特步  2.5折</h2>
+												<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+												<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+												<p style="color: #333;">
+													<a class="expendbtn">展开全文</a>
+												</p>
+											</div>
+										</div>
+										<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+											</div>
+										</div>
+										<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
+									</div>
+									<div class="mui-card mui-car-url">
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<h2>特步  2.5折</h2>
+												<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+												<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+												<p style="color: #333;">
+													<a class="expendbtn">展开全文</a>
+												</p>
+											</div>
+										</div>
+										<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+											</div>
+										</div>
+										<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
+									</div>
+
+								</div>
+							</div>
+							<div id="item2mobile" class="mui-slider-item mui-control-content">
+
+								<div class="mui-scroll" id="refresh_container2">
+									<div class="mui-card mui-car-url">
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<h2>特步  2.5折（预告）</h2>
+												<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+												<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+												<p style="color: #333;">
+													<a class="expendbtn">展开全文</a>
+												</p>
+											</div>
+										</div>
+										<div class="mui-card-header mui-card-media" style="z-index:1;">
+											<div class="mui-row">
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+												</div>
+											</div>
+										</div>
+										<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
+										<!--<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #000000;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>-->
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+
+			<!--菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<header class="mui-bar mui-bar-nav">
+							<h1 class="mui-title">选择品牌</h1>
+						</header>
+						<div class="mui-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media">
+									<a>
+										<img class="mui-media-object mui-pull-left" src="images/tblogo.jpg">
+										<div class="mui-media-body">
+											特步
+											<p class='mui-ellipsis'>特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，先后携手北京、上海、香港、台北、厦门、广州、武汉等二十多个城市的马拉松，成为大中华区赞助马拉松赛事最多的品牌。除囊括众多跑步赛事资源，奥运竞走巅峰级运动员陈定、王镇、蔡泽林、短跑名将谢震业、标枪亚洲纪录保持者赵庆刚等体坛之星也悉数纳入跑步代言阵营。“爱跑步，爱特步”的口号深入人心。</p>
+										</div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media">
+									<a>
+										<img class="mui-media-object mui-pull-left" src="images/addslogo.jpg">
+										<div class="mui-media-body">
+											阿迪达斯
+											<p class='mui-ellipsis'>adidas 中文作阿迪达斯，德国运动用品制造商</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</aside>
+
+		</div>
+		<script type="text/javascript" charset="utf-8">
+			//是否已出现省略号
+			function isEllipsis(dom) {
+				if(dom.scrollHeight > dom.clientHeight) {
+					return true
+				}
+				return false;
+			};
+
+			function initHeight() {
+				var titleH = $(".mui-title").height();
+				var sliderCH = $("#sliderSegmentedControl").height();
+				var dh = $(window).height();
+				$("#slider").css("min-height", dh - titleH - sliderCH);
+			}
+
+			//是否已出现省略号
+			function isEllipsis(dom) {
+				if(dom.scrollHeight > dom.clientHeight) {
+					return true
+				}
+				return false;
+			};
+
+			var count = 0;
+			mui.init({});
+			mui.ready(function() {
+				initHeight();
+				var previewImage = mui.previewImage(); //图片预览
+				//重写返回按钮
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					if($(".mui-preview-in").length > 0) {
+						previewImage.close();
+						return false;
+					}
+
+					backButtonPress++;
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+
+				mui('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+
+				var count = 0;
+				// 刷新组件对象
+				var pullToRefresh1 = mui('#refresh_container1').pullToRefresh({
+					down: {
+						callback: function() {
+							var _self = this;
+							setTimeout(function() {
+								_self.endPullDownToRefresh();
+							}, 1000);
+						}
+					},
+					up: {
+						auto: false, //默认执行一次上拉加载
+						callback: function() {
+							var _self = this;
+							setTimeout(function() {
+								mui.toast("刷新成功")
+								_self.endPullUpToRefresh(count++ > 1); //最后一页加载完成后禁用上拉
+							}, 1000);
+						}
+					}
+				});
+
+				//到商品列表
+				mui("body").on("tap", ".buy", function() {
+					mui.openWindow({
+						url: "./html/goods_list.html",
+						id: "goodsList"
+					})
+				})
+				//折叠面板中的按钮触发事件
+				mui("#offCanvasSideScroll").on("tap", "li", function() {
+					mui.openWindow({
+						url: "./html/goods_list.html",
+						id: "goodsList"
+					})
+				})
+
+				mui("body").on("tap", ".expendbtn", function() {
+					if($(this).text() == "展开全文") {
+						$(this).parent().prev().removeClass("mui-ellipsis-2");
+						$(this).text("收起全文");
+					} else {
+						$(this).parent().prev().addClass("mui-ellipsis-2");
+						$(this).text("展开全文");
+					}
+
+				})
+
+				//如果无隐藏文字则不显示展开按钮
+				$(".mui-ellipsis-2").each(function() {
+					if(!isEllipsis(this)) {
+						$(this).next().remove();
+					}
+				})
+				//到购物车
+				mui("body").on("tap", "#toCard", function() {
+					mui.openWindow({
+						url: "./html/card.html",
+						id: "card"
+					})
+				})
+				//到个人中心
+				mui("body").on("tap", "#toUserInfo", function() {
+					mui.openWindow({
+						url: "./html/userinfo.html",
+						id: "userinfo"
+					})
+				})
+				//到消息中心
+				mui("body").on("tap", "#toMsgCenter", function() {
+					mui.openWindow({
+						url: "./html/msgCenter.html",
+						if: "msgCenter"
+					})
+				})
+
+				mui("#slider").on("tap", "a", function() {
+					mui.openWindow({
+						url: this.href
+					})
+				})
+				//刷新角标数字
+				window.addEventListener("refreshCartNum", function(event) {
+					refreshCartNum(event.detail.num);
+				})
+				window.addEventListener("refreshChatNum", function(event) {
+					refreshChatNum(event.detail.num);
+				})
+
+			});
+
+			mui.plusReady(function() {
+				//首先获得目标页面的对象
+				var indexWv = null;
+				var userinfoWv = null;
+				var goodsDetailWV = null;
+				//定时刷新消息的角标内容
+				setInterval(function() {
+					if(indexWv == null) {
+						indexWv = plus.webview.getWebviewById('index');
+					}
+					if(userinfoWv == null) {
+						userinfoWv = plus.webview.getWebviewById('userinfo');
+					}
+					if(goodsDetailWV == null) {
+						goodsDetailWV = plus.webview.getWebviewById('goods_detail.html');
+					}
+					if(indexWv != null) {
+						mui.fire(indexWv, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(indexWv, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+
+					if(userinfoWv != null) {
+						mui.fire(userinfoWv, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(userinfoWv, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+					if(goodsDetailWV != null) {
+						mui.fire(goodsDetailWV, 'refreshCartNum', {
+							//自定义事件参数
+							num: '5'
+						});
+						mui.fire(goodsDetailWV, 'refreshChatNum', {
+							//自定义事件参数
+							num: '5'
+						});
+					}
+				}, 10000);
+
+			})
+		</script>
+	</body>
+
+</html>
