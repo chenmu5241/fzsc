@@ -139,7 +139,8 @@
 			"html/goods_list.html": {
 				"resources": [],
 				"refer": [
-					"html/goods_detail.html"
+					"html/goods_detail.html",
+					"html/card.html"
 				],
 				"priority": 0
 			},
@@ -202,7 +203,8 @@
 				"resources": [],
 				"refer": [
 					"login.html",
-					"html/order.html"
+					"html/order.html",
+					"html/card.html"
 				],
 				"priority": 0
 			}
