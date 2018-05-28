@@ -17,6 +17,9 @@
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/mui.pullToRefresh.js"></script>
 		<script src="../js/mui.pullToRefresh.material.js"></script>
+		<script src="../js/mui.zoom.js"></script>
+		<script src="../js/mui.previewimage.js"></script>
+		<script src="../js/clipboard-polyfill.js"></script>
 		<script type="text/javascript">
 			if(!isLogin()) {
 				location.href = "../login.html";
@@ -38,8 +41,191 @@
 			}
 			
 			.mui-btn {
-				padding: 5px;
-				margin-bottom: 5px;
+				padding: 10px;
+				margin-bottom: 3px;
+			}
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+				border-top: 1px solid #c8c7cc;
+			}
+			
+			.mui-btn {
+				padding: 2px;
 			}
 		</style>
 	</head>
@@ -51,76 +237,131 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
-					<a id="offCanvasBtn" href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></a>
 					<h1 class="mui-title">特步特卖</h1>
+					<div class="mui-title-div mui-pull-right" style="margin-right: 0px;">
+						<a id="toCard" class="mui-icon  mui-icon-extra mui-icon-extra-cart"><span class="mui-badge cartNum" style="top:5px;    margin-left:-18px;">1</span></a>
+						<a id="offCanvasBtn" href="#offCanvasSide" style="margin-left: 3px;" class="mui-icon mui-action-menu mui-icon-bars "></a>
+					</div>
 				</header>
 				<div class="mui-scroll-wrapper mui-content" id="pullrefresh" style="overflow-y:auto;">
 					<div class="mui-scroll" id="refresh_container">
 						<!--这里放置真实显示的DOM内容-->
-						<ul class="mui-table-view" style="margin-top: 0px;padding: 3px 3px 3px 3px;">
-							<li class="mui-row" id="goodsrow">
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/1.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100.00</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50.00</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:40.00</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+						<div class="mui-table-view" style="margin-top: 0px;">
+							<div class="mui-row">
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-header mui-card-media" style="z-index:1;">
+										<div class="mui-row">
+											<h4>【特步女装】风衣xxx001</h4>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<div class="mui-card-content-inner">
+											<div class="mui-col-sm-12 mui-col-xs-12">
+												<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100.00</span>
+												<span style="font-size: 12px;">活动价:50.00</span>
+												<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+											</div>
+										</div>
+									</div>
+									<div class="mui-row">
+										<div class="mui-pull-right">
+											<a class="mui-btn mui-btn-danger chat">咨询</a>
+											<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
+										</div>
+									</div>
+									<div class="mui-row">
+										<span style="font-size: 12px;color:#888888;margin-left: 5px;">先选尺码再加购物车</span>
+										<div class="mui-row guige" style="border: 1px #E7ECEA solid;padding:5px 5px 3px 5px;">
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn">M(160/184A)</a>
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn">M(160/184A)</a>
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn mui-disabled">M(160/184A)</a>
+											</div>
+											<a class="mui-btn mui-btn-danger mui-pull-right addCard" style="margin-top: 5px;">加购物车</a>
+										</div>
 									</div>
 								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/a.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
+							</div>
+							<div class="mui-row">
+								<div class="mui-card mui-car-url">
+									<div class="mui-card-header mui-card-media" style="z-index:1;">
+										<div class="mui-row">
+											<h4>【特步女装】风衣xxx001</h4>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4">
+												<img src="../images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+											</div>
+										</div>
+									</div>
+									<div class="mui-card-footer">
+										<div class="mui-card-content-inner">
+											<div class="mui-col-sm-12 mui-col-xs-12">
+												<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100.00</span>
+												<span style="font-size: 12px;">活动价:50.00</span>
+												<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
+											</div>
+										</div>
+									</div>
+									<div class="mui-row">
+										<div class="mui-pull-right">
+											<a class="mui-btn mui-btn-danger chat">咨询</a>
+											<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
+										</div>
+									</div>
+									<div class="mui-row">
+										<span style="font-size: 12px;color:#888888;margin-left: 5px;">先选尺码再加购物车</span>
+										<div class="mui-row guige" style="border: 1px #E7ECEA solid;padding:5px 5px 3px 5px;">
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn">M(160/184A)</a>
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn">M(160/184A)</a>
+											</div>
+											<div class="mui-col-sm-4 mui-col-xs-4 mui-text-center">
+												<a class="mui-btn mui-disabled">M(160/184A)</a>
+											</div>
+											<a class="mui-btn mui-btn-danger mui-pull-right addCard" style="margin-top: 5px;">加购物车</a>
+										</div>
 									</div>
 								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/b.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/c.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/a.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-								<div class="mui-col-sm-6 mui-col-xs-6">
-									<div style="padding: 1px;">
-										<img width="100%" src="../images/b.jpg" />
-										<p class="mui-ellipsis" style="font-size: 12px;font-weight: 900;margin-bottom: 0px;">【特步女装】风衣xxx001</p>
-										<span style="font-size: 12px;text-decoration: line-through;color:#888888;">吊牌价:100</span>
-										<span style="margin-left:10px;font-size: 12px;">活动价:50</span><br>
-										<span style="font-size: 12px;color:#F0AD4E">会员价:只有vip才会显示价格</span>
-										<hr style="height:1px;border:none;border-top:1px solid #F3F3F3;width: 95%;" />
-									</div>
-								</div>
-							</li>
-						</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- off-canvas backdrop这里是为了用户点击主界面自动关闭侧滑页 -->
@@ -226,6 +467,27 @@
 			var count = 0;
 			mui.init();
 			mui.ready(function() {
+				var previewImage = mui.previewImage(); //图片预览
+
+				//重写返回按钮
+				var old_back = mui.back;
+				mui.back = function(event) {
+					if($(".mui-preview-in").length > 0) {
+						previewImage.close();
+						return false;
+					} else {
+						old_back();
+					}
+				};
+
+				//到购物车
+				mui("body").on("tap", "#toCard", function() {
+					mui.openWindow({
+						url: "./card.html",
+						id: "card"
+					})
+				})
+
 				var scroll = mui('.mui-scroll-wrapper').scroll({
 					indicators: true,
 				}); //初始化scroll组件
@@ -251,19 +513,6 @@
 					}
 				});
 
-				var scroll = mui('.mui-scroll-wrapper').scroll();
-				document.querySelector('.mui-scroll-wrapper').addEventListener('scroll', function(e) {
-					console.log(scroll.y)
-				})
-				//mui('.mui-scroll-wrapper').scroll().scrollTo(0, -360, 0);
-				$("#goodsrow").children().each(function() {
-					this.addEventListener("tap", function() {
-						mui.openWindow({
-							url: "goods_detail.html",
-							id : "goodsDetail"
-						})
-					})
-				})
 				//折叠面板中的按钮触发事件
 				mui("#filter").on("tap", ".mui-btn", function() {
 					if($(this).hasClass("mui-btn-warning")) {
@@ -273,6 +522,44 @@
 					}
 				})
 
+				//选择尺码
+				mui(".guige").on("tap", ".mui-btn", function() {
+					$(this).addClass("mui-btn-warning");
+					$(this).parent().siblings().find(".mui-btn").removeClass("mui-btn-warning");
+				})
+				//分享
+				mui("body").on("tap", ".shareBtn", function() {
+					clipboard.writeText("【特步童装】针织上衣6879496494646,活动价格80.00")
+					mui.confirm("文字内容已复制到剪切板", "提示", ["确定", "取消"], function(e) {
+						if(e.index == 0) {
+							var pictures = [];
+							$("#slider").find("img").each(function() {
+								pictures.push(this.src);
+							})
+
+							plus.share.sendWithSystem({
+								pictures: pictures,
+								content: '分享内容',
+								href: 'http://www.dcloud.io/'
+							}, function() {
+								console.log('分享成功');
+							}, function(e) {
+								console.log('分享失败：' + JSON.stringify(e));
+							});
+						}
+					})
+				})
+				//到聊天页面
+				$("body").on("tap", ".chat", function() {
+					mui.openWindow({
+						url: "chat.html",
+						id: "chat"
+					})
+				})
+				//加购物车
+				$("body").on("tap", ".addCard", function() {
+					mui.toast("加购物车成功")
+				})
 				//侧滑容器父节点
 				var offCanvasWrapper = mui('#offCanvasWrapper');
 				//隐藏策划页面

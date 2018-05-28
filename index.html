@@ -19,6 +19,7 @@
 		<script src="./js/mui.pullToRefresh.material.js"></script>
 		<script src="./js/mui.zoom.js"></script>
 		<script src="./js/mui.previewimage.js"></script>
+		<script src="./js/clipboard-polyfill.js"></script>
 		<script type="text/javascript">
 			if(!isLogin()) {
 				location.href = "login.html";
@@ -222,6 +223,10 @@
 			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
 				border-top: 1px solid #c8c7cc;
 			}
+			
+			.mui-btn {
+				padding: 2px;
+			}
 		</style>
 	</head>
 
@@ -289,7 +294,7 @@
 									预告
 								</a>
 							</div>
-							<div class="mui-slider-group" >
+							<div class="mui-slider-group">
 								<!--<div class="mui-scroll-wrapper">
 									<div class="mui-scroll" id="refresh_container">-->
 
@@ -303,7 +308,7 @@
 														<div class="mui-card-content">
 															<div class="mui-card-content-inner">
 																<h2>特步  2.5折</h2>
-																<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
+																<p style="color: #333;">抢购活动03月03日 23:59-03月08日 23:59</p>
 																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
 																<p style="color: #333;">
 																	<a class="expendbtn">展开全文</a>
@@ -332,80 +337,89 @@
 																</div>
 															</div>
 														</div>
-														<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
-														<!--<p class="mui-pull-right buy" style="margin-top: -50px;right:30px;background-color: #000000;color: white;z-index: 10000;position: absolute;">立即抢购 <i class="mui-icon mui-icon-arrowright" style="font-size: 16px;"></i></p>-->
-													</div>
-													<div class="mui-card mui-car-url">
-														<div class="mui-card-content">
-															<div class="mui-card-content-inner">
-																<h2>特步  2.5折</h2>
-																<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力</p>
-																<p style="color: #333;">
-																	<a class="expendbtn">展开全文</a>
-																</p>
-															</div>
+														<div class="mui-row mui-pull-right">
+															<a class="mui-btn mui-btn-danger buy">去抢购</a>
+															<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
 														</div>
-														<div class="mui-card-header mui-card-media" style="z-index:1;">
-															<div class="mui-row">
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="2" />
-																</div>
-															</div>
-														</div>
-														<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
-													</div>
-													<div class="mui-card mui-car-url">
-														<div class="mui-card-content">
-															<div class="mui-card-content-inner">
-																<h2>特步  2.5折</h2>
-																<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，</p>
-																<p style="color: #333;">
-																	<a class="expendbtn">展开全文</a>
-																</p>
-															</div>
-														</div>
-														<div class="mui-card-header mui-card-media" style="z-index:1;">
-															<div class="mui-row">
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
-																</div>
-															</div>
-														</div>
-														<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
 													</div>
 
+													<div class="mui-card mui-car-url">
+														<div class="mui-card-content">
+															<div class="mui-card-content-inner">
+																<h2>特步  2.5折</h2>
+																<p style="color: #333;">抢购活动03月03日 23:59-03月08日 23:59</p>
+																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+																<p style="color: #333;">
+																	<a class="expendbtn">展开全文</a>
+																</p>
+															</div>
+														</div>
+														<div class="mui-card-header mui-card-media" style="z-index:1;">
+															<div class="mui-row">
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+															</div>
+														</div>
+														<div class="mui-row mui-pull-right">
+															<a class="mui-btn mui-btn-danger buy">去抢购</a>
+															<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
+														</div>
+													</div>
+
+													<div class="mui-card mui-car-url">
+														<div class="mui-card-content">
+															<div class="mui-card-content-inner">
+																<h2>特步  2.5折</h2>
+																<p style="color: #333;">抢购活动03月03日 23:59-03月08日 23:59</p>
+																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
+																<p style="color: #333;">
+																	<a class="expendbtn">展开全文</a>
+																</p>
+															</div>
+														</div>
+														<div class="mui-card-header mui-card-media" style="z-index:1;">
+															<div class="mui-row">
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+																<div class="mui-col-sm-4 mui-col-xs-4">
+																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
+																</div>
+															</div>
+														</div>
+														<div class="mui-row mui-pull-right">
+															<a class="mui-btn mui-btn-danger buy">去抢购</a>
+															<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -421,8 +435,8 @@
 														<div class="mui-card-content">
 															<div class="mui-card-content-inner">
 																<h2>特步  2.5折</h2>
-																<p style="color: #333;">抢购活动将于03月08日 23:59结束</p>
-																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，</p>
+																<p style="color: #333;">抢购活动03月03日 23:59-03月08日 23:59</p>
+																<p class="mui-ellipsis-2">特步一直以中国跑步运动领导者为使命。自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，自2007年起，特步在跑步领域频频发力，</p>
 																<p style="color: #333;">
 																	<a class="expendbtn">展开全文</a>
 																</p>
@@ -431,26 +445,29 @@
 														<div class="mui-card-header mui-card-media" style="z-index:1;">
 															<div class="mui-row">
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/1.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/a.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/b.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/c.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 																<div class="mui-col-sm-4 mui-col-xs-4">
-																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="3" />
+																	<img src="images/tebu.jpg" width="100%" style="padding: 0 1px;" data-preview-src="" data-preview-group="1" />
 																</div>
 															</div>
 														</div>
-														<button type="button" class="mui-btn mui-btn-warning buy" style="background-color:#FF8600;margin-top: -40px;right:10px; padding: 0 5px;z-index: 10000;position: absolute;">立即抢购</button>
+														<div class="mui-row mui-pull-right">
+															<a class="mui-btn mui-btn-danger buy">去抢购</a>
+															<a class="mui-btn mui-btn-danger shareBtn" style="margin-left: 5px;">转发</a>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -562,6 +579,30 @@
 						id: "goodsList"
 					})
 				})
+
+				//分享
+				mui("body").on("tap", ".shareBtn", function() {
+					clipboard.writeText("【特步童装】针织上衣6879496494646,活动价格80.00")
+					mui.confirm("文字内容已复制到剪切板", "提示", ["确定", "取消"], function(e) {
+						if(e.index == 0) {
+							var pictures = [];
+							$("#slider").find("img").each(function() {
+								pictures.push(this.src);
+							})
+
+							plus.share.sendWithSystem({
+								pictures: pictures,
+								content: '分享内容',
+								href: 'http://www.dcloud.io/'
+							}, function() {
+								console.log('分享成功');
+							}, function(e) {
+								console.log('分享失败：' + JSON.stringify(e));
+							});
+						}
+					})
+				})
+
 				//折叠面板中的按钮触发事件
 				mui("#offCanvasSideScroll").on("tap", "li", function() {
 					mui.openWindow({
